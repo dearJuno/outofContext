@@ -1,6 +1,8 @@
 import './App.css';
 import axios from 'axios';
-import {useEffect} from 'react'
+import {useEffect} from 'react';
+import Search from './components/Search';
+import Header from './components/Header';
 
 //Make two API calls  
 //Make HTML foundation 
@@ -10,7 +12,6 @@ import {useEffect} from 'react'
 //Router/Routes/Route 
 //set up Use State, Use Effect 
 //Incorporate Firebase 
-
 
 // Tasks for Saturday am.
 // 1. Create Search bar where user can input movie of choice
@@ -42,7 +43,6 @@ function App() {
         url: `https://api.themoviedb.org/3/movie/863/keywords`,
         params: {
           api_key: apiKeyMov 
-         
         }
       }).then((response) => {
         console.log(response.data)
@@ -64,7 +64,11 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <Form 
+      onChange={handleSearchInput}
+      />
+      <Header />
+      <Search />
     </div>
   );
 }
