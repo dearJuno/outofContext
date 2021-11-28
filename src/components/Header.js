@@ -10,7 +10,8 @@ function Header() {
                 <div className="headerPbox flexBox">
                     {/* film strip image */}
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum quidem sunt ullam, molestiae optio nemo mollitia ad sit tempora dicta!</p>
-                    <a href="#searchSection">Find GIF!</a>
+                    {/* moved this link into the div for positioning */}
+                    <a href="#searchSection">Find GIF!</a> 
                 </div>
             </div>
         </header>
