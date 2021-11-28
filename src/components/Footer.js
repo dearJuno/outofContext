@@ -2,7 +2,7 @@ function Footer() {
 
     return (
         <footer>
-            <div className="wrapper">
+            <div className="wrapper flexBox footer">
                 <a href="https://junocollege.com/">Created at Juno College</a>
                 <div className="flexBox">
                     <a href="https://github.com/dearJuno">
