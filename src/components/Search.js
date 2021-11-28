@@ -11,10 +11,11 @@ function Search({setUpdateArray}) {
   const [searchInput, setSearchInput] = useState ('') 
   // const [keyword] = useState ('')
 
+  // function to handle someone typing in the input field
   const handleSearchInput = (e) => {
     setSearchInput(e.target.value);
   }
-
+  //function to handle the submission of the movie title form
   const handleSubmit = (e) => {
     e.preventDefault();
     
@@ -78,10 +79,13 @@ function Search({setUpdateArray}) {
                  //state is expecting an array and now we have an array 
                 }))
               })
-              // const noPromise = Promise.resolve(test[0])
-              // console.log(noPromise)
+              
+            
               console.log(test, 'This is promise array')
+            // wrapped our test array in a promise.all function to be able to resolve the promises and display the results
             Promise.all(test).then((noPromise) =>{console.log(noPromise, "This is value")
+
+            // update the state of the prop coming from the main app.js
             setUpdateArray(noPromise)
           })
             }

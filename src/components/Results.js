@@ -1,4 +1,5 @@
 function Results({ updateArray}) {
+    // using props we grabbed the updateArray containing the 3 gifs we want to render
 console.log('Props is working :)))))))))))))))', updateArray)
 
     return (

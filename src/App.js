@@ -29,13 +29,16 @@ import {useState} from 'react'
 
 function App() {
 
-
+  //state variable that we can use to pass information between results component and search component
   const [updateArray, setUpdateArray] = useState([])
 
   return (
     <div className="App">
       <Header />
+      {/* sending the prop to allow the search component to update state */}
       <Search setUpdateArray={setUpdateArray}/>
+      
+      {/* Sending the array of the 3 gifs as a prop to the results component */}
       <Results 
       updateArray={updateArray}/>
       <Footer />
