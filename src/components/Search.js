@@ -4,7 +4,9 @@ import axios from 'axios';
 // 2. Call movie api by movie title which returns id of movie
 
 
-function Search() {
+function Search({setUpdateArray}) {
+
+  // const emptyArray = []
   
   const [searchInput, setSearchInput] = useState ('') 
   // const [keyword] = useState ('')
@@ -56,21 +58,32 @@ function Search() {
           .then((response) => {
             console.log(response) 
             // Pass each keyword to GIPHY API
-            response.forEach(keyword => {
+           const test = response.map(keyword => {
+             //taking keyword and using the keyword to make call to Giph API 
                 const apiKey ='vKgSlbA9IvP9mzh808UAXFD7YeIabsQe'
+                return(
             axios({
                 url: 'https://api.giphy.com/v1/gifs/search', 
                 params: {
                     api_key: apiKey,
                     q: keyword, 
-                }
-              }).then((response) => {
+                }} 
+              ).then((response) => {
                   const array = response.data.data
                   // Randomize GIF results
+                  //one gif per keyword
                   const random = array[Math.floor(Math.random() * array.length)]
-                  console.log(random)
-                })
+                  //pushing three single gifs to empty array made at top
+                  return random
+                 //state is expecting an array and now we have an array 
+                }))
               })
+              // const noPromise = Promise.resolve(test[0])
+              // console.log(noPromise)
+              console.log(test, 'This is promise array')
+            Promise.all(test).then((noPromise) =>{console.log(noPromise, "This is value")
+            setUpdateArray(noPromise)
+          })
             }
           )
         }) 

@@ -1,9 +1,11 @@
 import './App.css';
 // import axios from 'axios';
-// import {useEffect} from 'react';
+import {useEffect} from 'react';
 import Search from './components/Search';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Results from './components/Results';
+import {useState} from 'react'
 
 //Make two API calls  
 //Make HTML foundation 
@@ -26,14 +28,16 @@ import Footer from './components/Footer';
 
 
 function App() {
-    // useEffect(() => {
-      
-    // }, [])
+
+
+  const [updateArray, setUpdateArray] = useState([])
 
   return (
     <div className="App">
       <Header />
-      <Search />
+      <Search setUpdateArray={setUpdateArray}/>
+      <Results 
+      updateArray={updateArray}/>
       <Footer />
     </div>
   );
