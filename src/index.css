@@ -43,23 +43,6 @@ header {
   width: 50%;
 }
 
-header a {
-  background: radial-gradient(circle, rgba(255,255,255,1) 23%, rgba(142,249,244,0.5) 73%, rgba(142,249,244,0.3) 71%, rgba(150,250,245,1) 100%);
-  border-radius: 45%;
-  padding: 27px 28px;
-  position: absolute;
-  text-align: center;
-  right: 11%;
-  top: 87%;
-}
-
-header a:hover {
-  background-color: #8ef9f4; 
-}
-header a:active {
-  background-color: transparent;
-}
-
 h1 {
   font-family: 'Kanit';
   font-weight: 300;
@@ -72,7 +55,36 @@ header h2 {
   margin-bottom: 20px;
 }
 
+footer a:focus {
+  padding: 2px;
+}
+
+a:focus, 
+input:focus, 
+button:focus {
+outline: 4px solid #6b6eec;
+}
+
 /* Classes */
+.skip-link {
+  position: absolute;
+  left: -1000px;
+  line-height: 1.7;
+  top: 5px;
+  z-index: 999;
+  height: 79px;
+  padding: 20px 30px;
+  text-align: center;
+  background-color: #141640 ;
+  color: #eaeaf0;
+  border: none;
+  border-radius: 45%;
+}
+
+.skip-link:focus {
+  left: 0;
+  margin-left: 10px;
+}
 
 header > .wrapper {
   align-items: flex-end;
@@ -90,6 +102,23 @@ header > .wrapper > .flexBox {
 .headerPbox {
   justify-content: flex-end;
   position: relative;
+}
+
+.button {
+  background: radial-gradient(circle, rgba(255,255,255,1) 23%, rgba(142,249,244,0.5) 73%, rgba(142,249,244,0.3) 71%, rgba(150,250,245,1) 100%);
+  border-radius: 45%;
+  padding: 27px 28px;
+  position: absolute;
+  text-align: center;
+  right: 11%;
+  top: 87%;
+}
+
+.button:hover {
+  background-color: #8ef9f4; 
+}
+.button:active {
+  background-color: transparent;
 }
 
 .footer {
