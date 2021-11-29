@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 // 1. Create Search bar where user can input movie of choice
 // 2. Call movie api by movie title which returns id of movie
 
@@ -98,11 +100,12 @@ function Search({setUpdateArray}) {
   return (
       <section className="searchSection" id="searchSection">
           <div className="searchWrapper wrapper">
-              <h2>Lorem ipsum dolor sit amet.</h2>
               <form action="submit" onSubmit={handleSubmit} role="search">
-                  <label htmlFor="search">Lorem ipsum dolor sit amet consectetur adipisicing.</label>
-                  <input type="search" id="search" placeholder="Enter a movie" value={searchInput} onChange={handleSearchInput} required/>
-                  <button>Submit</button>
+                  <label htmlFor="search">Search movie, get GIF's</label>
+                  <div className="flexBox">
+                    <input type="search" id="search" placeholder="Enter a movie" value={searchInput} onChange={handleSearchInput} required/>
+            <button><FontAwesomeIcon icon={faSearch} /><span class="sr-only">Search</span></button>
+                  </div> 
               </form>
           </div>
       </section>    

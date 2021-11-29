@@ -1,15 +1,16 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
+
 function Footer() {
 
     return (
         <footer>
             <div className="wrapper flexBox footer">
                 <a href="https://junocollege.com/">Created at Juno College</a>
-                <div className="flexBox">
-                    <a href="https://github.com/dearJuno">
-                        <p>dearJuno | </p>
-                        {/* <FontAwesomeIcon icon={faGithub} /> */}
+                    <a class="dearJuno" href="https://github.com/dearJuno">
+                        dearJuno |
+                        <FontAwesomeIcon icon={faGithub} />
                     </a>
-                </div>
             </div>
         </footer>
     )
