@@ -2,6 +2,10 @@ import { useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+
+
+
+import { useNavigate } from "react-router-dom";
 // 1. Create Search bar where user can input movie of choice
 // 2. Call movie api by movie title which returns id of movie
 
@@ -12,6 +16,8 @@ function Search({setUpdateArray, setUpdateKeyword}) {
   
   const [searchInput, setSearchInput] = useState ('') 
   // const [keyword] = useState ('')
+  const [movieId, setMovieId] = useState(100)
+  const navigate = useNavigate();
 
   // function to handle someone typing in the input field
   const handleSearchInput = (e) => {
@@ -33,6 +39,7 @@ function Search({setUpdateArray, setUpdateKeyword}) {
         console.log(response.data.results)
     
         const movieId = response.data.results[0].id
+        setMovieId(movieId)
         //Pass movie id to keyword point
         axios({
         url: `https://api.themoviedb.org/3/movie/${movieId}/keywords`,
@@ -89,6 +96,7 @@ function Search({setUpdateArray, setUpdateKeyword}) {
 
             // update the state of the prop coming from the main app.js
             setUpdateArray(noPromise)
+            navigate(`/movie/${movieId}`);
           })
             }
           )

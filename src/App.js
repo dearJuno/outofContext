@@ -6,6 +6,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Results from './components/Results';
 import {useState} from 'react'
+import { BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
+
 
 //Make two API calls  
 //Make HTML foundation 
@@ -28,7 +30,7 @@ import {useState} from 'react'
 
 
 function App() {
-
+  
   //state variable that we can use to pass information between results component and search component
   const [updateArray, setUpdateArray] = useState([])
   const [updateKeyword, setUpdateKeyword] = useState([])
@@ -37,20 +39,26 @@ function App() {
   const [] = useState('')
 
   return (
+    <Router>
     <div className="App">
-      <Header />
+      {/* <Header /> */}
       {/* sending the prop to allow the search component to update state */}
-      <Search setUpdateArray={setUpdateArray}
-      setUpdateKeyword={setUpdateKeyword}
-      />
-      
-      {/* Sending the array of the 3 gifs as a prop to the results component */}
-      <Results 
-      updateArray={updateArray}
-      updateKeyword={updateKeyword}
-      />
-      <Footer />
     </div>
+    <Routes>
+      <Route path='/' element={<> 
+        <Header/>
+        <Search setUpdateArray={setUpdateArray} setUpdateKeyword={setUpdateKeyword}/>
+        <Footer/>
+      </>}/>
+      <Route path="movie/:movieID" element={
+        <>
+          <Search setUpdateArray={setUpdateArray} setUpdateKeyword={setUpdateKeyword}/>
+          <Results updateArray={updateArray} updateKeyword={updateKeyword}/>
+        </>
+      }/>
+
+    </Routes>
+    </Router>
   );
 }
 
