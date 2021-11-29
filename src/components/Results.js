@@ -5,35 +5,25 @@ function Results({ updateArray, updateKeyword }) {
     console.log('Props is working :)))))))))))))))', updateArray, updateKeyword)
     const newKeyWordArray = []
     
-useEffect(() => {for(let i =0; i < updateKeyword.length; i++){
+for(let i =0; i < updateKeyword.length; i++){
         newKeyWordArray.push({name: updateKeyword[i], gif: updateArray[i]})
     }
-    console.log(newKeyWordArray)}, [])
+    console.log(newKeyWordArray)
 
     return (
         <section className="resultsSection">
             <ul className="results wrapper">
                 {
-                    updateArray.map(function (individualGif) {
+                    newKeyWordArray.map(function (individualGif) {
                         return (
                             <li className="gifBox">
-                                <img src={individualGif.images.original.url} alt={individualGif.title} />
+                                <img src={individualGif.gif.images.original.url} alt={individualGif.gif.title}/>
+                                <p>{individualGif.name}</p>
                             </li>)
                     })
                     
                 }
             </ul>
-             <ul className="results wrapper"> 
-                {
-                    updateKeyword.map(function(individualKeyword){
-                        return(
-                            <li>
-                                <p>{individualKeyword}</p>
-                            </li>
-                        )
-                    })
-                }
-            </ul> 
         </section>
     )
 }
