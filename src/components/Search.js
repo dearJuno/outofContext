@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 // 2. Call movie api by movie title which returns id of movie
 
 
-function Search({setUpdateArray}) {
+function Search({setUpdateArray, setUpdateKeyword}) {
 
   // const emptyArray = []
   
@@ -62,7 +62,7 @@ function Search({setUpdateArray}) {
           console.log(keywordArray)
           // Take only three keywords
           const threeKeywordArray = keywordArray.slice(0,3)
-          console.log(threeKeywordArray)
+          setUpdateKeyword(threeKeywordArray)
           return threeKeywordArray
           })
           .then((response) => {
