@@ -7,7 +7,7 @@ function Results(/*{ updateArray }*/) {
     const [updateArray, setUpdateArray] = useState([])
     const [gifArray, setGifArray] = useState([])
     const movieID = useParams()
-    
+
     useEffect(() => {
         //Pass movie id to keyword point
         
