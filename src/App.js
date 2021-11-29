@@ -31,16 +31,24 @@ function App() {
 
   //state variable that we can use to pass information between results component and search component
   const [updateArray, setUpdateArray] = useState([])
+  const [updateKeyword, setUpdateKeyword] = useState([])
+
+  //trying to change the keyword title for the GIFS 
+  const [] = useState('')
 
   return (
     <div className="App">
       <Header />
       {/* sending the prop to allow the search component to update state */}
-      <Search setUpdateArray={setUpdateArray}/>
+      <Search setUpdateArray={setUpdateArray}
+      setUpdateKeyword={setUpdateKeyword}
+      />
       
       {/* Sending the array of the 3 gifs as a prop to the results component */}
       <Results 
-      updateArray={updateArray}/>
+      updateArray={updateArray}
+      updateKeyword={updateKeyword}
+      />
       <Footer />
     </div>
   );
