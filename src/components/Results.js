@@ -134,6 +134,7 @@ function Results() {
                 e.target.key = randomGifs.images.original.id
                 e.target.alt = randomGifs.images.original.title
                 e.target.title = randomGifs.images.original.title
+                // Get the next sibling of e (the keyword paragraph)
                 e.nativeEvent.originalTarget.nextElementSibling.innerText = keywordsToUse[rndInt].name
 
             }));
