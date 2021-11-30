@@ -36,7 +36,6 @@ function Search({ setUpdateArray, setUpdateKeyword }) {
 
       const movieId = response.data.results[0].id
       navigate(`/movie/${movieId}`);
-      
     })
     // Clear search input field 
     setSearchInput('')
