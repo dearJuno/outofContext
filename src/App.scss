@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import 'navigation';
+@import 'header';
+@import 'footer';
+@import 'navigation';
 
 html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figcaption,figure,main{display:block}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}button,html [type=button],[type=reset],[type=submit]{-webkit-appearance:button}button::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring,[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details,menu{display:block}summary{display:list-item}canvas{display:inline-block}template{display:none}[hidden]{display:none}
 
@@ -48,28 +52,33 @@ header {
 }
 
 h1 {
-  font-weight: 300;
-  margin-bottom: 20px;
+    font-weight: 300;
+    margin-bottom: 20px;
   
 }
 
 h1, h2, label {
-  font-family: 'Kanit';
+    font-family: 'Kanit';
 }
 
 label {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
+.logo {
+    display:flex;
+    width: 80px;
+
+}
 header h2 {
-  align-self: center;
-  margin-bottom: 20px;
+    align-self: center;
+    margin-bottom: 20px;
 }
 
 form {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 form input {
@@ -80,19 +89,19 @@ form input {
 }
 
 form button {
-  background-color: transparent;
-  border: none;
-  position: absolute;
-  left: 85%;
-  top: 6%;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    left: 85%;
+    top: 25%;
 }
 
 button {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 footer a:focus {
-  padding: 2px;
+    padding: 2px;
 }
 
 a:focus, 
@@ -101,9 +110,13 @@ button:focus {
 outline: 4px solid #6b6eec;
 }
 
+input {
+    border-radius:30px;
+    padding:10px 50px;
+}
 /* Classes */
 .skip-link {
-  position: absolute;
+    position: absolute;
   left: -1000px;
   line-height: 1.7;
   top: 5px;
@@ -161,25 +174,35 @@ header > .wrapper > .flexBox {
   background-color: #141640;
   color: #eaeaf0;
   padding: 70px 0;
+  
 }
 
 form .flexBox {
-  position: relative;
+    position: relative;
 }
 
 .results {
-  align-items: center;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  padding: 40px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    justify-content:space-between;
+    padding: 40px 0;
+        p {
+        padding:20px;
+        text-transform: capitalize;
+      }
 }
 
 .gifBox {
   background-color: gainsboro;
-  -webkit-box-shadow: 6px 6px 0px 1px #6B6EEC; 
   border-radius: 15px;
-  box-shadow: 6px 6px 0px 1px #6B6EEC;
+  -webkit-box-shadow: 6px 6px 0px 5px #6B6EEC; 
+  box-shadow: 6px 8px 0px 1px #6B6EEC;
   width: 25vw;
+  height:40vh;
 }
 
 .gifBox p {
@@ -189,8 +212,16 @@ form .flexBox {
 .gifBox img {
   object-fit: cover;
   overflow: hidden;
-  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   border-radius: 15px;
+  width: 25vw;
+  height:40vh;
+  box-shadow: 6px 8px 0px 5px #6B6EEC;
 }
 
 .footer {

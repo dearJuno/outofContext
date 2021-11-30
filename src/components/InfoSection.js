@@ -12,7 +12,6 @@ function InfoSection() {
             </div>
         </div>
     )
-
 }
 
 export default InfoSection

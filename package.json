@@ -44,6 +44,10 @@
     ]
   },
   "devDependencies": {
+<<<<<<< HEAD
+    "file-loader": "^6.2.0"
+=======
     "sass": "^1.44.0"
+>>>>>>> 3df96c7545fe67bac3b9642455d43d9cb3e0a4ed
   }
 }

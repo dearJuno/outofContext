@@ -1,3 +1,4 @@
+import { ReactComponent as LogoSvg} from './logo.svg';
 import popcorn from '../assets/popcorn.png'
 import { Link } from 'react-router-dom'
 
@@ -17,7 +18,9 @@ function Header() {
                     {/* NEED TO DELETE THE STYLING  */}
                     {/* ADDED LINK BACK TO HOME PAGE  */}
                     <Link to="/" style={{ textDecoration: 'none' }}>
-                    <img src={popcorn} alt="Blue Popcorn Icon" style={{ height: '140px', width: '140px' }} />
+                    <div className="logo">
+                        <LogoSvg />
+                    </div>
                     </Link>
                     <h1>Out Of Context</h1>
                 </div>

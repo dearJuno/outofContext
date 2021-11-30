@@ -112,8 +112,7 @@ function Results() {
                 return error
             })
     
-       
-           // there is a small problem here where if we type in the same movie it won't show because movieID.movieID doesn't change in that case!! =========================>
+     // there is a small problem here where if we type in the same movie it won't show because movieID.movieID doesn't change in that case!! =========================>
     }, [movieID.movieID])
 
     
