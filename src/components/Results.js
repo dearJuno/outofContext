@@ -6,11 +6,12 @@ function Results(/*{ updateArray }*/) {
     const [updateKeyword, setUpdateKeyword] = useState([])
     const [updateArray, setUpdateArray] = useState([])
     const [gifArray, setGifArray] = useState([])
+    const [error, setError] = useState('')
     const movieID = useParams()
 
     useEffect(() => {
         //Pass movie id to keyword point
-        
+        setError('')
         const apiKeyMov = `786c1383f2a24f7ee0f7ae525d2a9af4`
         axios({
             url: `https://api.themoviedb.org/3/movie/${movieID.movieID}/keywords`,
@@ -20,7 +21,16 @@ function Results(/*{ updateArray }*/) {
         })
             .then((response) => {
                 console.log(response.data)
+
+                if (response.data.keywords.length === 0) {
+                    return setError('This movie does not contain any keywords with which to grab gifs with')
+                }
+                // What should we do if there is only 1 or 2 keywords in the array : right now it just goes through normally (ie: sam) ========================>
+                if (response.data.keywords.length <= 2) {
+                    return setError('There are not enough keywords to display 3 gifs for this movie!')
+                }
                 // An array to hold keywords
+                
                 const keywordArray = []
                 for (let keyName in response.data.keywords) {
                     keywordArray.push(response.data.keywords[keyName].name)
@@ -53,12 +63,23 @@ function Results(/*{ updateArray }*/) {
                         }
                         ).then((response) => {
                             const array = response.data.data
+                            // in the case that the giphy api doesnt return any gifs for our selected keyword, we should ? =============================>
+                            if (array.length === 0) {
+                                console.log('yo no gifs here')
+
+                            }
+                            console.log(array)
                             // Randomize GIF results
                             //one gif per keyword
                             const random = array[Math.floor(Math.random() * array.length)]
                             //pushing three single gifs to empty array made at top
                             return random
                             //state is expecting an array and now we have an array 
+
+                            
+                        }).catch(error => {
+                            console.log(error)
+                            return error
                         }))
                 })
 
@@ -67,15 +88,19 @@ function Results(/*{ updateArray }*/) {
                 // wrapped our test array in a promise.all function to be able to resolve the promises and display the results
                 Promise.all(test).then((noPromise) => {
                     console.log(noPromise, "This is value")
+                    // in the case that the value from api is undefined
 
                     // update the state of the prop coming from the main app.js
                     setUpdateArray(noPromise)
                 })
             }
-            )
+            ).catch(error => {
+                console.log(error)
+                return error
+            })
     
        
-           
+           // there is a small problem here where if we type in the same movie it won't show because movieID.movieID doesn't change in that case!! =========================>
     }, [movieID.movieID])
     
     useEffect(() => {
@@ -95,8 +120,9 @@ function Results(/*{ updateArray }*/) {
     console.log(gifArray, 'gif array')
     return (
         <section className="resultsSection">
+            {error && <h2>{error}</h2>}
             <ul className="results wrapper">
-                {
+                { !error &&
                     gifArray.map(function (individualGif) {
                         return (
                             <li className="gifBox">

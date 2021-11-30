@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 function Search({ setUpdateArray, setUpdateKeyword }) {
 
   const [searchInput, setSearchInput] = useState('')
+  const [error, setError] = useState('')
   // const [keyword] = useState ('')
   const navigate = useNavigate();
 
@@ -22,7 +23,7 @@ function Search({ setUpdateArray, setUpdateKeyword }) {
   //function to handle the submission of the movie title form
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setError('')
     const apiKeyMov = `786c1383f2a24f7ee0f7ae525d2a9af4`
     //Call API by inputing movie title 
     axios({
@@ -33,6 +34,12 @@ function Search({ setUpdateArray, setUpdateKeyword }) {
       }
     }).then((response) => {
       console.log(response.data.results)
+        //error handling if there aren't any movies returned
+      if (response.data.results.length === 0) {
+          setError('There is no movie that matches the input')
+          console.log('error')
+          return
+      }
 
       const movieId = response.data.results[0].id
       navigate(`/movie/${movieId}`);
@@ -100,12 +107,16 @@ function Search({ setUpdateArray, setUpdateKeyword }) {
       //   }
       //   )
     })
+    .catch(error => {
+        return error
+    })
     // Clear search input field 
     setSearchInput('')
   }
 
   return (
     <section className="searchSection" id="searchSection">
+        {error && <h2>{error}</h2>}
       <div className="searchWrapper wrapper">
         <form action="submit" onSubmit={handleSubmit} role="search">
           <label htmlFor="search">Search movie, get GIF's</label>
