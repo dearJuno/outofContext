@@ -40,7 +40,6 @@ function App() {
   return (
     <Router>
     <div className="App">
-      <span className="loaderHidden"></span>
       {/* <Header /> */}
       {/* sending the prop to allow the search component to update state */}
     </div>
