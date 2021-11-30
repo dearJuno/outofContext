@@ -3,6 +3,7 @@ import './App.scss';
 import {useEffect} from 'react';
 import Search from './components/Search';
 import Header from './components/Header';
+import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import Results from './components/Results';
 import {useState} from 'react'
@@ -27,8 +28,6 @@ import { BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 // 6. Meet back here!
 
 
-
-
 function App() {
   
   //state variable that we can use to pass information between results component and search component
@@ -46,7 +45,9 @@ function App() {
     </div>
     <Routes>
       <Route path='/' element={<> 
+      <Navigation />
         <Header/>
+        {/* <Globe /> */}
         <Search setUpdateArray={setUpdateArray} setUpdateKeyword={setUpdateKeyword}/>
         <Footer/>
       </>}/>

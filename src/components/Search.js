@@ -36,69 +36,7 @@ function Search({ setUpdateArray, setUpdateKeyword }) {
 
       const movieId = response.data.results[0].id
       navigate(`/movie/${movieId}`);
-      // //Pass movie id to keyword point
-      // axios({
-      //   url: `https://api.themoviedb.org/3/movie/${movieId}/keywords`,
-      //   params: {
-      //     api_key: apiKeyMov
-      //   }
-      // })
-      //   .then((response) => {
-      //   console.log(response.data)
-      //   // An array to hold keywords
-      //   const keywordArray = []
-      //   for (let keyName in response.data.keywords) {
-      //     keywordArray.push(response.data.keywords[keyName].name)
-      //   }
-      //   console.log(keywordArray)
-      //   // Randomize keywords
-      //   for (let i = keywordArray.length - 1; i > 0; i--) {
-      //     const j = Math.floor(Math.random() * (i + 1));
-      //     [keywordArray[i], keywordArray[j]] = [keywordArray[j], keywordArray[i]];
-      //   }
-      //   console.log(keywordArray)
-      //   // Take only three keywords
-      //   const threeKeywordArray = keywordArray.slice(0, 3)
-      //   setUpdateKeyword(threeKeywordArray)
-      //   return threeKeywordArray
-      // })
-      //   .then((response) => {
-      //     console.log(response)
-      //     // Pass each keyword to GIPHY API
-      //     const test = response.map(keyword => {
-      //       //taking keyword and using the keyword to make call to Giph API 
-      //       const apiKey = 'vKgSlbA9IvP9mzh808UAXFD7YeIabsQe'
-      //       return (
-      //         axios({
-      //           url: 'https://api.giphy.com/v1/gifs/search',
-      //           params: {
-      //             api_key: apiKey,
-      //             q: keyword,
-      //           }
-      //         }
-      //         ).then((response) => {
-      //           const array = response.data.data
-      //           // Randomize GIF results
-      //           //one gif per keyword
-      //           const random = array[Math.floor(Math.random() * array.length)]
-      //           //pushing three single gifs to empty array made at top
-      //           return random
-      //           //state is expecting an array and now we have an array 
-      //         }))
-      //     })
-
-
-      //     console.log(test, 'This is promise array')
-      //     // wrapped our test array in a promise.all function to be able to resolve the promises and display the results
-      //     Promise.all(test).then((noPromise) => {
-      //       console.log(noPromise, "This is value")
-
-      //       // update the state of the prop coming from the main app.js
-      //       setUpdateArray(noPromise)
-      //       navigate(`/movie/${movieId}`);
-      //     })
-      //   }
-      //   )
+      
     })
     // Clear search input field 
     setSearchInput('')

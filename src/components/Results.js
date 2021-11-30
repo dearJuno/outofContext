@@ -74,8 +74,6 @@ function Results(/*{ updateArray }*/) {
             }
             )
     
-       
-           
     }, [movieID.movieID])
     
     useEffect(() => {
