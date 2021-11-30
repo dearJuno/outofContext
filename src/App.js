@@ -5,6 +5,7 @@ import Search from './components/Search';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Results from './components/Results';
+import InfoSection from './components/InfoSection';
 import {useState} from 'react'
 import { BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 
@@ -47,13 +48,16 @@ function App() {
     <Routes>
       <Route path='/' element={<> 
         <Header/>
+        <InfoSection/>
         <Search setUpdateArray={setUpdateArray} setUpdateKeyword={setUpdateKeyword}/>
         <Footer/>
       </>}/>
       <Route path="movie/:movieID" element={
         <>
+        <Header/>
           <Search setUpdateArray={setUpdateArray} setUpdateKeyword={setUpdateKeyword}/>
-          <Results updateArray={updateArray} updateKeyword={updateKeyword}/>
+          <Results updateArray={updateArray} updateKeyword={updateKeyword}
+          />
         </>
       }/>
 

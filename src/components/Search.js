@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
 
 
 
@@ -36,6 +37,11 @@ function Search({ setUpdateArray, setUpdateKeyword }) {
 
       const movieId = response.data.results[0].id
       navigate(`/movie/${movieId}`);
+
+      //TRYING TO GET MOVIES//
+      // for(let prop in response.data.results[0]){
+      //   console.log(prop, response.data.results[0][prop], "Movie Object")
+      // }
       // //Pass movie id to keyword point
       // axios({
       //   url: `https://api.themoviedb.org/3/movie/${movieId}/keywords`,
@@ -103,7 +109,6 @@ function Search({ setUpdateArray, setUpdateKeyword }) {
     // Clear search input field 
     setSearchInput('')
   }
-
   return (
     <section className="searchSection" id="searchSection">
       <div className="searchWrapper wrapper">

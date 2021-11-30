@@ -61,8 +61,6 @@ function Results(/*{ updateArray }*/) {
                             //state is expecting an array and now we have an array 
                         }))
                 })
-
-
                 console.log(test, 'This is promise array')
                 // wrapped our test array in a promise.all function to be able to resolve the promises and display the results
                 Promise.all(test).then((noPromise) => {
@@ -73,9 +71,6 @@ function Results(/*{ updateArray }*/) {
                 })
             }
             )
-    
-       
-           
     }, [movieID.movieID])
     
     useEffect(() => {
