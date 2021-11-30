@@ -2,7 +2,9 @@ import { useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
 import { trackPromise } from 'react-promise-tracker';
+
 
 
 
@@ -45,10 +47,10 @@ function Search({ setUpdateArray, setUpdateKeyword }) {
       const movieId = response.data.results[0].id
       navigate(`/movie/${movieId}`);
     }));
+    
     // Clear search input field 
     setSearchInput('')
   }
-
   return (
     <section className="searchSection" id="searchSection">
       <div className="searchWrapper wrapper">
