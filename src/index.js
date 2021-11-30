@@ -3,10 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Loader from './components/Loader';
+
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    {/* Render Loader at Index Level */}
+    <Loader />
   </React.StrictMode>,
   document.getElementById('root')
 );
