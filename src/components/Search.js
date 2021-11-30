@@ -57,6 +57,7 @@ function Search({ setUpdateArray, setUpdateKeyword }) {
       }
 
       const movieId = response.data.results[0].id
+      navigate(`/`)
       navigate(`/movie/${movieId}`);
     })
     .catch(error => {
