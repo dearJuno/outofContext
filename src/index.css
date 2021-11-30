@@ -177,15 +177,20 @@ form .flexBox {
 .gifBox {
   background-color: gainsboro;
   -webkit-box-shadow: 6px 6px 0px 1px #6B6EEC; 
+  border-radius: 15px;
   box-shadow: 6px 6px 0px 1px #6B6EEC;
   width: 25vw;
+}
+
+.gifBox p {
+  text-align: center;
 }
 
 .gifBox img {
   object-fit: cover;
   overflow: hidden;
   position: relative;
-  box-shadow: 6px 6px 0px 1px #6B6EEC;
+  border-radius: 15px;
 }
 
 .footer {

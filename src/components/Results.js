@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import axios from 'axios';
 import { useParams } from "react-router-dom";
+import { trackPromise } from 'react-promise-tracker';
 
 function Results() {
 
@@ -116,7 +117,8 @@ function Results() {
             console.log(keywordsToUse[rndInt], 'random choice')
            
             const apiKey = 'vKgSlbA9IvP9mzh808UAXFD7YeIabsQe'
-            axios({
+            // Track Promise for Loader to reference
+            trackPromise(axios({
                 url: 'https://api.giphy.com/v1/gifs/search',
                 params: {
                     api_key: apiKey,
@@ -134,7 +136,7 @@ function Results() {
                 e.target.title = randomGifs.images.original.title
                 e.nativeEvent.originalTarget.nextElementSibling.innerText = keywordsToUse[rndInt].name
 
-            })
+            }));
             
         }
     
