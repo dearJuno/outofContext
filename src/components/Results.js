@@ -193,7 +193,7 @@ function Results() {
                     
                 }
             
-            </>
+
             </ul>
         </section>
     )
