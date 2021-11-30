@@ -5,6 +5,7 @@ import Search from './components/Search';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Results from './components/Results';
+import InfoSection from './components/InfoSection';
 import {useState} from 'react'
 import { BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 
@@ -29,8 +30,7 @@ import { BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 
 
 
-function App() {
-  
+function App() {  
   //state variable that we can use to pass information between results component and search component
   const [updateArray, setUpdateArray] = useState([])
   const [updateKeyword, setUpdateKeyword] = useState([])
@@ -47,13 +47,17 @@ function App() {
     <Routes>
       <Route path='/' element={<> 
         <Header/>
+        <InfoSection/>
         <Search setUpdateArray={setUpdateArray} setUpdateKeyword={setUpdateKeyword}/>
         <Footer/>
       </>}/>
       <Route path="movie/:movieID" element={
-        <>
-          <Search setUpdateArray={setUpdateArray} setUpdateKeyword={setUpdateKeyword}/>
-          <Results updateArray={updateArray} updateKeyword={updateKeyword}/>
+        <>          
+        <Header/>
+              <Search setUpdateArray={setUpdateArray} setUpdateKeyword={setUpdateKeyword} /> 
+              {/* moved ul to App.js because we only want one to render */}
+            
+              <Results updateArray={updateArray} updateKeyword={updateKeyword} />
         </>
       }/>
 
