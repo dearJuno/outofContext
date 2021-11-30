@@ -81,6 +81,13 @@ form {
     flex-direction: column;
 }
 
+form input {
+  border: none;
+  border-radius: 15px;
+  line-height: 1.7;
+  padding: 4px 10px;
+}
+
 form button {
     background-color: transparent;
     border: none;
@@ -120,7 +127,7 @@ input {
   background-color: #141640 ;
   color: #eaeaf0;
   border: none;
-  border-radius: 45%;
+  border-radius: 15px;
 }
 
 .skip-link:focus {
@@ -198,6 +205,10 @@ form .flexBox {
   height:40vh;
 }
 
+.gifBox p {
+  text-align: center;
+}
+
 .gifBox img {
   object-fit: cover;
   overflow: hidden;
@@ -215,12 +226,31 @@ form .flexBox {
 
 .footer {
   justify-content: space-between;
-  padding-bottom: 20px;
+  padding: 15px 0;
 }
 
 .dearJuno {
   display: flex;
 }
-.fa-github {
+
+.fa-github, .svg-inline--fa {
   margin-left: 5px;
+  vertical-align: -0.375em;
+  
+}
+
+/* don't show loader on initial search */
+header ~ .loader {
+  display: none;
+}
+
+.loader {
+  position: absolute;
+  display: block;
+  background-color: #6B6EEC;
+  /* cover exact results area */
+  top: 32vh;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
