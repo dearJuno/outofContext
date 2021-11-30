@@ -146,7 +146,8 @@ function Results() {
 
     
     return (
-       
+        <section className="resultsSection">
+            <ul className="results wrapper">
             <>
                 {
                     
@@ -161,6 +162,8 @@ function Results() {
                 }
             
             </>
+            </ul>
+        </section>
     )
 }
 

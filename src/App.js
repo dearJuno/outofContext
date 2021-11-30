@@ -54,13 +54,10 @@ function App() {
       <Route path="movie/:movieID" element={
         <>          
         <Header/>
-          <section className="resultsSection">
               <Search setUpdateArray={setUpdateArray} setUpdateKeyword={setUpdateKeyword} /> 
               {/* moved ul to App.js because we only want one to render */}
-            <ul className="results wrapper">
+            
               <Results updateArray={updateArray} updateKeyword={updateKeyword} />
-            </ul>
-          </section>
         </>
       }/>
 
