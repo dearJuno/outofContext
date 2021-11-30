@@ -29,8 +29,7 @@ import { BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 
 
 
-function App() {
-  
+function App() {  
   //state variable that we can use to pass information between results component and search component
   const [updateArray, setUpdateArray] = useState([])
   const [updateKeyword, setUpdateKeyword] = useState([])
@@ -52,8 +51,13 @@ function App() {
       </>}/>
       <Route path="movie/:movieID" element={
         <>
-          <Search setUpdateArray={setUpdateArray} setUpdateKeyword={setUpdateKeyword}/>
-          <Results updateArray={updateArray} updateKeyword={updateKeyword}/>
+          <section className="resultsSection">
+              <Search setUpdateArray={setUpdateArray} setUpdateKeyword={setUpdateKeyword} /> 
+              {/* moved ul to App.js because we only want one to render */}
+            <ul className="results wrapper">
+              <Results updateArray={updateArray} updateKeyword={updateKeyword} />
+            </ul>
+          </section>
         </>
       }/>
 
