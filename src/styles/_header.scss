@@ -1,0 +1,35 @@
+// HEADER //////////////
+header {
+    flex-direction: column;
+  }
+  
+  .headerPbox p {
+    width: 50%;
+  }
+  
+  h1 {
+      margin-bottom: 20px;
+  }
+  .logo {
+    display:flex;
+    width: 80px;
+  
+  }
+  
+  header > .wrapper {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    justify-content: space-evenly;
+    padding: 20px 0 50px;
+  }
+  
+  header > .wrapper > .flexBox {
+    width: 100%;
+  }
+  
+  .headerPbox {
+    justify-content: flex-end;
+    position: relative;
+  }

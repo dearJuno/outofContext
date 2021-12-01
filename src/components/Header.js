@@ -1,5 +1,4 @@
-import { ReactComponent as LogoSvg} from './logo.svg';
-import popcorn from '../assets/popcorn.png'
+import popcorn from '../assets/logo.svg';
 import { Link } from 'react-router-dom'
 
 function Header() {
@@ -19,7 +18,8 @@ function Header() {
                     {/* ADDED LINK BACK TO HOME PAGE  */}
                     <Link to="/" style={{ textDecoration: 'none' }}>
                     <div className="logo">
-                        <LogoSvg />
+                        {/* <LogoSvg /> */}
+                        <img src={popcorn} alt="Popcorn Icon"/>
                     </div>
                     </Link>
                     <h1>Out Of Context</h1>
