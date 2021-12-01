@@ -1,0 +1,21 @@
+//INFO SECTION 
+header h2 {
+    align-self: center;
+    margin-bottom: 20px;
+}
+.button {
+  background: radial-gradient(circle, rgba(255,255,255,1) 23%, rgba(142,249,244,0.5) 73%, rgba(142,249,244,0.3) 71%, rgba(150,250,245,1) 100%);
+  border-radius: 45%;
+  padding: 27px 28px;
+  position: absolute;
+  text-align: center;
+  right: 5%;
+  top: 90%;
+}
+
+.button:hover {
+  background-color: #8ef9f4; 
+}
+.button:active {
+  background-color: transparent;
+}
