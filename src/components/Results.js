@@ -308,7 +308,7 @@ function Results() {
                                 <button className="gifButton" onClick={handleImage} disabled={isLoading}>
                                     <img src={individualGif.gif.images.original.url} alt={individualGif.gif.title} data-index={index} />
                                 </button>
-                                <button className="keywordButton button" onClick={handleKeyword} disabled={isLoading}>
+                                <button className="keywordButton" onClick={handleKeyword} disabled={isLoading}>
 
                                     <p data-index={index}>{individualGif.name}</p>
 
