@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 // 1. Create Search bar where user can input movie of choice
 // 2. Call movie api by movie title which returns id of movie
 
-function Search({ setUpdateArray, setUpdateKeyword }) {
+function Search({ setMovieTitle, setMoviePoster }) {
 
   const [searchInput, setSearchInput] = useState('')
   const [error, setError] = useState('')
@@ -51,7 +51,8 @@ function Search({ setUpdateArray, setUpdateKeyword }) {
           console.log('error')
           return
       }
-
+    //   setMovieTitle(response.data.results[0].title)
+    //   setMoviePoster(response.data.results[0].poster_path)
       const movieId = response.data.results[0].id
       navigate(`/`)
       navigate(`/movie/${movieId}`);

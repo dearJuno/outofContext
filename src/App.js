@@ -32,8 +32,8 @@ import { BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 
 function App() {  
   //state variable that we can use to pass information between results component and search component
-  const [updateArray, setUpdateArray] = useState([])
-  const [updateKeyword, setUpdateKeyword] = useState([])
+  const [movieTitle, setmovieTitle] = useState('')
+  const [moviePoster, setMoviePoster] = useState('')
 
   //trying to change the keyword title for the GIFS 
   const [] = useState('')
@@ -48,16 +48,16 @@ function App() {
       <Route path='/' element={<> 
         <Header/>
         <InfoSection/>
-        <Search setUpdateArray={setUpdateArray} setUpdateKeyword={setUpdateKeyword}/>
+        <Search setmovieTitle={setmovieTitle} setMoviePoster={setMoviePoster}/>
         <Footer/>
       </>}/>
       <Route path="movie/:movieID" element={
         <>          
         <Header/>
-              <Search setUpdateArray={setUpdateArray} setUpdateKeyword={setUpdateKeyword} /> 
+              <Search setmovieTitle={setmovieTitle} setMoviePoster={setMoviePoster} /> 
               {/* moved ul to App.js because we only want one to render */}
             
-              <Results updateArray={updateArray} updateKeyword={updateKeyword} />
+              <Results movieTitle={movieTitle} moviePoster={moviePoster} />
         </>
       }/>
     </Routes>
