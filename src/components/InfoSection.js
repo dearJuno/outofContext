@@ -1,15 +1,16 @@
-import reel from '../assets/filmreel.png'
+import reel from '../assets/movieReel.png'
 
 function InfoSection() {
     return (
-        <div className="infoSection">
-            <h2>A GIF generator for your favourite flix</h2>
-            <div className="headerPbox flexBox">
-                {/* NEED TO DELETE THE STYLING  */}
-                <img src={reel} alt="Blue Film Reel" style={{ height: '200px', width: '200px' }} />
-                <p>Type in a movie in the search bar below to obtain the movie plot in GIFs.</p>
-                <a href="#searchSection" class="button">Find GIF!</a>
-            </div>
+        <div className='flexContainer wrapper'>           
+                <h2>A GIF generator for your favourite flix</h2>
+                <div className='infoContainer wrapper'>              
+                <img src={reel} alt="Black Film Reel"/>
+                <div className='infoBox'>
+                <p>Need a movie plot...without the words? Search any movie name and our app will show you exceptional memes that best describe it!</p>
+                <a href="#searchSection" className="button">Find GIF!</a>
+                </div> 
+                </div>
         </div>
     )
 }

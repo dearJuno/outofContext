@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react"
 import axios from 'axios';
 import { useParams } from "react-router-dom";
-import { trackPromise } from "react-promise-tracker";
+import { trackPromise } from 'react-promise-tracker';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRefresh } from '@fortawesome/free-solid-svg-icons';
 
 function Results() {
 
@@ -52,7 +54,10 @@ function Results() {
                     [keywordArray[i], keywordArray[j]] = [keywordArray[j], keywordArray[i]];
                 }
                 console.log(keywordArray)
-                
+
+                // Take only three keywords
+                const threeKeywordArray = keywordArray.slice(0, 3)
+
                 setUpdateKeyword(keywordArray)
 
                 //now return all keywords
@@ -113,18 +118,19 @@ function Results() {
                 return error
             })
     
-     // there is a small problem here where if we type in the same movie it won't show because movieID.movieID doesn't change in that case!! =========================>
+     
     }, [movieID.movieID])
 
     
     useEffect(() => {
         setError('')
         // using props we grabbed the updateArray containing the 3 gifs we want to render
+        setError('')
         console.log('Props is working :)))))))))))))))', updateArray, updateKeyword)
         const newKeyWordArray = []
 
         // remove any cases of undefined values
-        for (let i = updateKeyword.length - 1; i >= 0; i--) {
+        for ( let i = updateKeyword.length - 1; i >= 0; i--) {
             if (updateArray[i] === undefined) {
                 console.log('removed a value!')
                 updateArray.splice(i, 1)
@@ -149,11 +155,11 @@ function Results() {
         for (let i = 0; i < threeGifArray.length; i++) {
             newKeyWordArray.push({ name: threeKeywordArray[i], gif: threeGifArray[i] })
         }
-        
-        console.log(updateKeyword, 'updateKeyword')
-        console.log(updateArray, 'updateArray')
+        console.log(threeKeywordArray, 'updateKeyword')
+        console.log(threeGifArray, 'updateArray')
         setGifArray(newKeyWordArray)
         setIsLoading(false)
+
     }, [updateArray])
 
 
@@ -161,22 +167,24 @@ function Results() {
         function handleImage(e) {
             setIsLoading(true)
             let clickedElement
-            if (e.target.tagName === 'IMG') {
+
+            if(e.target.tagName === 'IMG') {
                 clickedElement = e.target
-            } else if (e.target.tagName === 'BUTTON') {
+            }else if(e.target.tagName === 'BUTTON') {
                 clickedElement = e.target.children[0]
             }
             console.log(clickedElement.dataset.index)
-
-            console.log(clickedElement.currentSrc)
+ 
+            console.log (clickedElement.currentSrc)
             // console.log(gifArray.findIndex(x => x.gif.images.original.url === e.target.currentSrc))
             // const index = gifArray.findIndex(x => x.gif.images.original.url === clickedElement.currentSrc)
             const index = clickedElement.dataset.index
-
-            const attachedKeyword = gifArray[index].name
+            
+            const attachedKeyword =  gifArray[index].name  
             console.log(attachedKeyword)
 
-            const newerNewerArray = gifArray.map(stuff => { return stuff })
+            const newerNewerArray = gifArray.map(stuff => {return stuff})
+            
             const apiKey = 'vKgSlbA9IvP9mzh808UAXFD7YeIabsQe'
             axios({
                 url: 'https://api.giphy.com/v1/gifs/search',
@@ -202,55 +210,54 @@ function Results() {
                 setGifArray(newerNewerArray)
                 setJustChecking(!justChecking)
                 setIsLoading(false)
-
+                
             })
             
-           
+
         }
 
     // logic is not fully there for when you start changing a lot...
-    function handleKeyword(e) {
+    function handleKeyword (e) {
         // first find all indexes 
         setIsLoading(true)
         const indexArray = []
 
-
+    
         gifArray.forEach(ele => {
             console.log(ele)
-            indexArray.push(updateKeyword.indexOf(ele.name))
+            indexArray.push(updateKeyword.indexOf(ele.name)) 
         })
-        console.log(indexArray)
+        console.log( indexArray)
         // sort indexes from smallest to largest
-        indexArray.sort(function (a, b) {
+        indexArray.sort(function(a, b) {
             return a - b;
-        });
-
+          });
+          
         console.log(indexArray)
 
         // remove the keywords from
-        const newSplicedGifs = updateArray.map(stuff => { return stuff })
-        const newSplicedKeywords = updateKeyword.map(stuff => { return stuff })
-        for (let i = indexArray.length - 1; i >= 0; i--) {
-            newSplicedKeywords.splice(indexArray[i], 1);
-            newSplicedGifs.splice(indexArray[i], 1)
-        }
+        const newSplicedGifs = updateArray.map(stuff => {return stuff})
+        const newSplicedKeywords = updateKeyword.map(stuff => {return stuff})
+        for (let i = indexArray.length -1; i >= 0; i--)
+        {newSplicedKeywords.splice(indexArray[i],1);
+        newSplicedGifs.splice(indexArray[i],1)}
         console.log(updateKeyword)
         console.log(newSplicedKeywords)
 
-        let newIndex = Math.floor(Math.random() * newSplicedKeywords.length)
+        let newIndex = Math.floor(Math.random()*newSplicedKeywords.length)
 
         console.log(e)
 
         let newClickedElement
-        if (e.target.tagName === 'P') {
+        if(e.target.tagName === 'P') {
             newClickedElement = e.target
-        } else if (e.target.tagName === 'BUTTON') {
+        }else if(e.target.tagName === 'BUTTON') {
             newClickedElement = e.target.children[0]
         }
         console.log(newClickedElement.dataset.index)
 
 
-        console.log(e.target.innerHTML)
+        console.log( e.target.innerHTML)
 
         // grab index of keyword clicked
         console.log(gifArray.findIndex(x => x.name === e.target.innerHTML))
@@ -275,17 +282,25 @@ function Results() {
         setJustChecking(!justChecking)
         setIsLoading(false)
     }
-    
 
-    
+
+
+
+
+
+    console.log(gifArray)
     return (
-        <section className="resultsSection">
-            {error && <h2 className="resultsError">{error}</h2>}
-            {!error && isLoading && <div className="loader"></div>}
-            <ul className="results wrapper">
-                
 
-                {!error &&
+        <section className="resultsSection wrapper">
+            <div className='titleResults'>
+            <h2>GIFs for { } </h2>
+            </div>
+            {error && <h2>{error}</h2>}
+            <ul className="results">
+                      {!error && isLoading && <div className="loader"></div>}
+
+                
+                { !error &&
 
                     gifArray.map(function (individualGif, index) {
                         return (
@@ -294,13 +309,14 @@ function Results() {
                                     <img src={individualGif.gif.images.original.url} alt={individualGif.gif.title} data-index={index} />
                                 </button>
                                 <button onClick={handleKeyword} disabled={isLoading}>
+
                                     <p data-index={index}>{individualGif.name}</p>
+
                                 </button>
                             </li>)
                     })
                     
                 }
-            
 
             </ul>
         </section>

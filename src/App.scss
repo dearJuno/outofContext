@@ -1,108 +1,79 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
-@import 'navigation';
-@import 'header';
-@import 'footer';
-@import 'navigation';
+@import './styles/header';
+@import './styles/footer';
+@import './styles/setup'; 
+@import './styles/results'; 
+@import './styles/info'; 
+@import './styles/search'; 
 
-html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figcaption,figure,main{display:block}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}button,html [type=button],[type=reset],[type=submit]{-webkit-appearance:button}button::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring,[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details,menu{display:block}summary{display:list-item}canvas{display:inline-block}template{display:none}[hidden]{display:none}
 
-.clearfix:after {visibility: hidden; display: block; font-size: 0; content: ''; clear: both; height: 0; }
-
-/* Border Box */
-
-html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
-
-*, *:before, *:after {box-sizing: inherit}
-
-/* Base Font Size (1rem = 10px) */
-
-html {font-size: 125%}
-
-/* Stabilizing Base Styles */
-
-body, ul, h1, h2, h3, p { margin: 0; padding: 0; } ul { list-style: none; } a { color: inherit; text-decoration: none; } img { width: 100%; height: auto; display: block; } time { font-weight: bold; }
-
-/* Convenient Classes */
-
-.wrapper { max-width: 1200px; width: 85%; margin: 0 auto;}
-
-.sr-only /*:not(:focus):not(:active)*/ { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px 1px 1px 1px); /* IE6, IE7 */ clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; /* added line */ }
-
-.flexBox {display: flex;}
-
-.button, a {transition: all 0.1s ease-out;}
-
-/* Tag Styles */
-
+// TYPOGRAPHY ////////////
 body, form button, form input {
   font-family: 'Lato';
 }
+h1, h2, label {
+  font-weight: 300px;
+  font-family: 'Kanit', sans-serif;
+}
+// HEADER TYPOGRAPHY 
+nav li{
+text-transform: uppercase;
+font-weight: bold;
+}
+nav p:hover{
+color:navy;
+padding-bottom: 2px; 
+border-bottom: navy 2px solid;
+cursor: pointer;
+}
+
+
+
+/* Base Font Size (1rem = 10px) */
+
+html {
+  font-size: 125%}
 
 body {
   color: #12121c;
 }
 
-header {
-  flex-direction: column;
-}
+/* Stabilizing Base Styles */
 
-.headerPbox p {
-  width: 50%;
+body, ul, h1, h2, h3, p { 
+  margin: 0; 
+  padding: 0; 
 }
-
-h1 {
-    font-weight: 300;
-    margin-bottom: 20px;
   
+  ul { 
+    list-style: none; } 
+
+  a { 
+    color: inherit; text-decoration: none; } 
+
+  img { 
+    width: 100%; 
+    height: auto;  
+    //Took out inline block
+  } 
+
+
+  // time { font-weight: bold; }
+
+/* Convenient Classes */
+
+.wrapper { 
+  max-width: 1200px; 
+  width: 90%; 
+  margin: 0 auto;
 }
 
-h1, h2, label {
-    font-family: 'Kanit';
-}
+.flexBox {
+  display: flex;}
 
-label {
-    margin-bottom: 20px;
-}
-
-.logo {
-    display:flex;
-    width: 80px;
-
-}
-header h2 {
-    align-self: center;
-    margin-bottom: 20px;
-}
-
-form {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-}
-
-form input {
-  border: none;
-  border-radius: 15px;
-  line-height: 1.7;
-  padding: 4px 10px;
-}
-
-form button {
-    background-color: transparent;
-    border: none;
-    position: absolute;
-    left: 85%;
-    top: 25%;
-}
-
-button {
-    cursor: pointer;
-}
-
-footer a:focus {
-    padding: 2px;
-}
+.button, a {
+  transition: all 0.1s ease-out;}
 
 a:focus, 
 input:focus, 
@@ -114,9 +85,12 @@ input {
     border-radius:30px;
     padding:10px 50px;
 }
-/* Classes */
+
+
+
+//SKIP TO CONTENT 
 .skip-link {
-    position: absolute;
+  position: absolute;
   left: -1000px;
   line-height: 1.7;
   top: 5px;
@@ -135,166 +109,172 @@ input {
   margin-left: 10px;
 }
 
-header > .wrapper {
-  align-items: flex-end;
-  display: flex;
-  flex-direction: column;
-  height: 90vh;
-  justify-content: space-evenly;
-  padding: 20px 0 50px;
-}
+// <<<<<<< riley-branch-dec-01
+// header > .wrapper {
+//   align-items: flex-end;
+//   display: flex;
+//   flex-direction: column;
+//   height: 90vh;
+//   justify-content: space-evenly;
+//   padding: 20px 0 50px;
+// }
 
-header > .wrapper > .flexBox {
-  width: 100%;
-}
+// header > .wrapper > .flexBox {
+//   width: 100%;
+// }
 
-.headerPbox {
-  justify-content: flex-end;
-  position: relative;
-}
+// .headerPbox {
+//   justify-content: flex-end;
+//   position: relative;
+// }
 
-.button {
-  background: radial-gradient(circle, rgba(255,255,255,1) 23%, rgba(142,249,244,0.5) 73%, rgba(142,249,244,0.3) 71%, rgba(150,250,245,1) 100%);
-  border-radius: 45%;
-  padding: 27px 28px;
-  position: absolute;
-  text-align: center;
-  right: 5%;
-  top: 90%;
-}
+// .button {
+//   background: radial-gradient(circle, rgba(255,255,255,1) 23%, rgba(142,249,244,0.5) 73%, rgba(142,249,244,0.3) 71%, rgba(150,250,245,1) 100%);
+//   border-radius: 45%;
+//   padding: 27px 28px;
+//   position: absolute;
+//   text-align: center;
+//   right: 5%;
+//   top: 90%;
+// }
 
-.button:hover {
-  background-color: #8ef9f4; 
-}
-.button:active {
-  background-color: transparent;
-}
+// .button:hover {
+//   background-color: #8ef9f4; 
+// }
+// .button:active {
+//   background-color: transparent;
+// }
 
-.searchSection {
-  background-color: #141640;
-  color: #eaeaf0;
-  padding: 70px 0;
+// .searchSection {
+//   background-color: #141640;
+//   color: #eaeaf0;
+//   padding: 70px 0;
   
+// }
+
+// form .flexBox {
+//     position: relative;
+// }
+
+// .results {
+//     display: -webkit-box;
+//     display: -ms-flexbox;
+//     display: flex;
+//     -webkit-box-align: center;
+//     -ms-flex-align: center;
+//     align-items: center;
+//     justify-content:space-between;
+//     padding: 40px 0;
+//         p {
+//         padding:20px;
+//         text-transform: capitalize;
+//       }
+// }
+
+// .gifBox {
+//   background-color: gainsboro;
+//   border-radius: 15px;
+//   -webkit-box-shadow: 6px 6px 0px 5px #6B6EEC; 
+//   box-shadow: 6px 8px 0px 1px #6B6EEC;
+//   position: relative;
+//   width: 25vw;
+//   height:40vh;
+// }
+
+// .gifBox p {
+//   text-align: center;
+// }
+
+// .keywordLoad {
+//   translate: 10px 20px;
+// }
+
+// .gifBox img {
+//   cursor: pointer;
+//   object-fit: cover;
+//   overflow: hidden;
+//   display: -webkit-box;
+//   display: -ms-flexbox;
+//   display: flex;
+//   -webkit-box-align: center;
+//   -ms-flex-align: center;
+//   align-items: center;
+//   border-radius: 15px;
+//   width: 25vw;
+//   height:40vh;
+//   box-shadow: 6px 8px 0px 5px #6B6EEC;
+//   transition: opacity 0.1s;
+// }
+
+// .gifBox img:hover {
+//   opacity: 0.5;
+// }
+
+// .gifBox img:active {
+//   opacity: 1;
+// }
+
+// .gifBox input { 
+//   display: block;
+//   position: absolute;
+//   cursor: pointer;
+//   height: 32px;
+//   width: 40px;
+//   opacity: 0; /* hide this */
+//   z-index: 2; /* and place it over the image */
+//   -webkit-touch-callout: none;
+// }
+
+// ul button:focus  {
+//   border: 4px solid white !important;
+//   opacity: 0.5;
+
+// }
+
+// button:focus > img  {
+//   border: 4px solid white !important;
+//   opacity: 0.5;
+
+// }
+
+// .footer {
+//   justify-content: space-between;
+//   padding: 15px 0;
+// }
+
+// .dearJuno {
+//   display: flex;
+// }
+
+// .fa-github, .svg-inline--fa {
+//   margin-left: 5px;
+//   vertical-align: -0.375em;
+// }
+
+// .searchError {
+//   margin: 0 autok 20px;
+//   width: 50vw;
+// }
+
+// .resultsError {
+//   margin: 20px auto;
+//   text-align: center;
+// =======
+// LOADING STATE
+/* don't show loader on initial search */
+header ~ .loader {
+  display: none;
+// >>>>>>> main
 }
-
-form .flexBox {
-    position: relative;
-}
-
-.results {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    justify-content:space-between;
-    padding: 40px 0;
-        p {
-        padding:20px;
-        text-transform: capitalize;
-      }
-}
-
-.gifBox {
-  background-color: gainsboro;
-  border-radius: 15px;
-  -webkit-box-shadow: 6px 6px 0px 5px #6B6EEC; 
-  box-shadow: 6px 8px 0px 1px #6B6EEC;
-  position: relative;
-  width: 25vw;
-  height:40vh;
-}
-
-.gifBox p {
-  text-align: center;
-}
-
-.keywordLoad {
-  translate: 10px 20px;
-}
-
-.gifBox img {
-  cursor: pointer;
-  object-fit: cover;
-  overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border-radius: 15px;
-  width: 25vw;
-  height:40vh;
-  box-shadow: 6px 8px 0px 5px #6B6EEC;
-  transition: opacity 0.1s;
-}
-
-.gifBox img:hover {
-  opacity: 0.5;
-}
-
-.gifBox img:active {
-  opacity: 1;
-}
-
-.gifBox input { 
-  display: block;
-  position: absolute;
-  cursor: pointer;
-  height: 32px;
-  width: 40px;
-  opacity: 0; /* hide this */
-  z-index: 2; /* and place it over the image */
-  -webkit-touch-callout: none;
-}
-
-ul button:focus  {
-  border: 4px solid white !important;
-  opacity: 0.5;
-
-}
-
-button:focus > img  {
-  border: 4px solid white !important;
-  opacity: 0.5;
-
-}
-
-.footer {
-  justify-content: space-between;
-  padding: 15px 0;
-}
-
-.dearJuno {
-  display: flex;
-}
-
-.fa-github, .svg-inline--fa {
-  margin-left: 5px;
-  vertical-align: -0.375em;
-}
-
-.searchError {
-  margin: 0 autok 20px;
-  width: 50vw;
-}
-
-.resultsError {
-  margin: 20px auto;
-  text-align: center;
-}
-
 .loader {
   position: absolute;
   display: block;
   background-color: #6B6EEC;
   left: 0;
   right: 0;
-  height: 56vh;
-  z-index: 10;
-}
-
-
-
+  
+  }
+// <<<<<<< riley-branch-dec-01
+//   height: 56vh;
+//   z-index: 10;
+// }
