@@ -5,6 +5,7 @@ import { trackPromise } from 'react-promise-tracker';
 
 function Results() {
 
+    const [isLoading, setIsLoading] = useState(false)
     const [updateKeyword, setUpdateKeyword] = useState([])
     const [updateArray, setUpdateArray] = useState([])
     // Keyword Bank for click change
@@ -12,10 +13,12 @@ function Results() {
     const [gifArray, setGifArray] = useState([])
     const [error, setError] = useState('')
     const movieID = useParams()
+    const [justChecking, setJustChecking] = useState(false)
 
     useEffect(() => {
         //Pass movie id to keyword point
         setError('')
+        setIsLoading(true)
         const apiKeyMov = `786c1383f2a24f7ee0f7ae525d2a9af4`
         axios({
             url: `https://api.themoviedb.org/3/movie/${movieID.movieID}/keywords`,
@@ -54,8 +57,10 @@ function Results() {
                 console.log(keywordArray)
                 // Take only three keywords
                 const threeKeywordArray = keywordArray.slice(0, 3)
-                setUpdateKeyword(threeKeywordArray)
-                return threeKeywordArray
+                setUpdateKeyword(keywordArray)
+
+                //now return all keywords
+                return keywordArray
             })
             .then((response) => {
                 console.log(response)
@@ -112,81 +117,191 @@ function Results() {
                 return error
             })
     
-     // there is a small problem here where if we type in the same movie it won't show because movieID.movieID doesn't change in that case!! =========================>
+     
     }, [movieID.movieID])
 
     
     useEffect(() => {
         // using props we grabbed the updateArray containing the 3 gifs we want to render
+        setError('')
         console.log('Props is working :)))))))))))))))', updateArray, updateKeyword)
         const newKeyWordArray = []
 
-        for (let i = 0; i < updateKeyword.length; i++) {
-            newKeyWordArray.push({ name: updateKeyword[i], gif: updateArray[i] })
+        // remove any cases of undefined values
+        for ( let i = updateKeyword.length - 1; i >= 0; i--) {
+            if (updateArray[i] === undefined) {
+                console.log('removed a value!')
+                updateArray.splice(i, 1)
+                updateKeyword.splice(i, 1)
+            }
         }
-        console.log(updateKeyword, 'updateKeyword')
-        console.log(updateArray, 'updateArray')
+        // slice the value so we are only left with 3 gifs with 3 matching keywords
+
+        let threeKeywordArray;
+        let threeGifArray;
+        console.log(updateArray.length)
+        if (updateArray.length >= 3) {
+            threeKeywordArray = updateKeyword.slice(0, 3)
+            threeGifArray = updateArray.slice(0, 3)
+
+        } else { // right now this message always plays at start of render....
+            // error message if initially there are atleast 3 keywords for said movie, but after removing the keywords that don't result in gifs from the api, there are less than 3.
+            console.log('hi')
+            return setError('There are not enough keywords for that movie! Please try another one')
+        }
+
+        for (let i = 0; i < threeGifArray.length; i++) {
+            newKeyWordArray.push({ name: threeKeywordArray[i], gif: threeGifArray[i] })
+        }
+        console.log(threeKeywordArray, 'updateKeyword')
+        console.log(threeGifArray, 'updateArray')
         setGifArray(newKeyWordArray)
+        setIsLoading(false)
 
     }, [updateArray])
 
     
         // Update images when clicked
         function handleImage(e) {
-            const keywordsToUse = keywordClickArray.keywords
-            console.log(keywordsToUse, 'not random keywords after click')
-
-            // function to randomize keyword index
-            function randomIntFromInterval(min, max) { // min and max included 
-                return Math.floor(Math.random() * (max - min + 1) + min)
+            setIsLoading(true)
+            let clickedElement
+            if(e.target.tagName === 'IMG') {
+                clickedElement = e.target
+            }else if(e.target.tagName === 'BUTTON') {
+                clickedElement = e.target.children[0]
             }
+            console.log(clickedElement.dataset.index)
+ 
+            console.log (clickedElement.currentSrc)
+            // console.log(gifArray.findIndex(x => x.gif.images.original.url === e.target.currentSrc))
+            // const index = gifArray.findIndex(x => x.gif.images.original.url === clickedElement.currentSrc)
+            const index = clickedElement.dataset.index
+            
+            const attachedKeyword =  gifArray[index].name  
+            console.log(attachedKeyword)
 
-            // Variable references random index between 0 and total number of keyword object
-            const rndInt = randomIntFromInterval(0, keywordClickArray.keywords.length)
-
-            console.log(keywordsToUse[rndInt], 'random choice')
-           
+            const newerNewerArray = gifArray.map(stuff => {return stuff})
             const apiKey = 'vKgSlbA9IvP9mzh808UAXFD7YeIabsQe'
-            // Track Promise for Loader to reference
-            trackPromise(axios({
+            axios({
                 url: 'https://api.giphy.com/v1/gifs/search',
                 params: {
                     api_key: apiKey,
-                    q: keywordsToUse[rndInt].name,
+                    q: attachedKeyword,
                 }
             }
             ).then((response) => {
-                const newGifArray = response.data.data
+                const array = response.data.data
+                // in the case that the giphy api doesnt return any gifs for our selected keyword, we should ? =============================>
+                if (array.length === 0) {
+                    console.log('yo no gifs here')
 
+                }
+                console.log(array)
                 // Randomize GIF results
-                const randomGifs = newGifArray[Math.floor(Math.random() * newGifArray.length)]
-                e.target.src = randomGifs.images.original.url
-                e.target.key = randomGifs.images.original.id
-                e.target.alt = randomGifs.images.original.title
-                e.target.title = randomGifs.images.original.title
-                // Get the next sibling of e (the keyword paragraph)
-                e.nativeEvent.originalTarget.nextElementSibling.innerText = keywordsToUse[rndInt].name
+                //one gif per keyword
+                const random = array[Math.floor(Math.random() * array.length)]
+                //pushing three single gifs to empty array made at top
 
-            }));
+                newerNewerArray[index].gif = random
+                setGifArray(newerNewerArray)
+                setJustChecking(!justChecking)
+                setIsLoading(false)
+                
+            })
             
+
         }
+
+    // logic is not fully there for when you start changing a lot...
+    function handleKeyword (e) {
+        // first find all indexes 
+        setIsLoading(true)
+        const indexArray = []
+
     
-    
+        gifArray.forEach(ele => {
+            console.log(ele)
+            indexArray.push(updateKeyword.indexOf(ele.name)) 
+        })
+        console.log( indexArray)
+        // sort indexes from smallest to largest
+        indexArray.sort(function(a, b) {
+            return a - b;
+          });
+          
+        console.log(indexArray)
+
+        // remove the keywords from
+        const newSplicedGifs = updateArray.map(stuff => {return stuff})
+        const newSplicedKeywords = updateKeyword.map(stuff => {return stuff})
+        for (let i = indexArray.length -1; i >= 0; i--)
+        {newSplicedKeywords.splice(indexArray[i],1);
+        newSplicedGifs.splice(indexArray[i],1)}
+        console.log(updateKeyword)
+        console.log(newSplicedKeywords)
+
+        let newIndex = Math.floor(Math.random()*newSplicedKeywords.length)
+
+        console.log(e)
+
+        let newClickedElement
+        if(e.target.tagName === 'P') {
+            newClickedElement = e.target
+        }else if(e.target.tagName === 'BUTTON') {
+            newClickedElement = e.target.children[0]
+        }
+        console.log(newClickedElement.dataset.index)
 
 
-    
+        console.log( e.target.innerHTML)
+
+        // grab index of keyword clicked
+        console.log(gifArray.findIndex(x => x.name === e.target.innerHTML))
+        const index = newClickedElement.dataset.index
+
+        //create copy of gifArray
+        const newerArray = gifArray
+
+        // grab new keyword and gif
+        // const newIndex = Math.floor(Math.random()*(updateKeyword.length-4) + 4)
+        // let newIndex = Math.floor(Math.random()*(updateKeyword.length-4) + 4)
+
+
+
+        const newKeyword = newSplicedKeywords[newIndex];
+        const newGif = newSplicedGifs[newIndex];
+
+        // change old keyword and gif with new keyword and gif
+        newerArray[index].gif = newGif
+        newerArray[index].name = newKeyword
+        setGifArray(newerArray)
+        setJustChecking(!justChecking)
+        setIsLoading(false)
+    }
+
+
+
+
+
+
+    console.log(gifArray)
     return (
         <section className="resultsSection">
             {error && <h2>{error}</h2>}
             <ul className="results wrapper">
-
+                {!error && isLoading && <li><p>Hi</p></li>}
+                
                 { !error &&
 
-                    gifArray.map(function (individualGif) {
+                    gifArray.map(function (individualGif, index) {
                         return (
-                            <li className="gifBox">
-                                <img src={individualGif.gif.images.original.url} alt={individualGif.gif.title} onClick={handleImage}/>
-                                <p>{individualGif.name}</p>
+                            <li className="gifBox" key={index} >
+                                <button onClick={handleImage} disabled={isLoading}>
+                                    <img src={individualGif.gif.images.original.url} alt={individualGif.gif.title} data-index={index} />
+                                </button>
+                                <button onClick={handleKeyword} disabled={isLoading}>
+                                    <p  data-index={index}>{individualGif.name}</p>
+                                </button>
                             </li>)
                     })
                     
