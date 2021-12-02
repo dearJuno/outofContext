@@ -323,7 +323,7 @@ function Results() {
 
                     gifArray.map(function (individualGif, index) {
                         return (
-                            <li className="gifBox" key={index} >
+                            <li className="gifBox wrapper" key={index} >
                                 <button className="gifButton" onClick={handleImage} disabled={isLoading}>
                                     {/* added title att. (title appears as tooltip on hover) */}
                                     <img src={individualGif.gif.images.original.url} alt={individualGif.gif.title} data-index={index} title={individualGif.gif.title} />
