@@ -149,7 +149,7 @@ function Results() {
         console.log(threeGifArray, 'updateArray')
         setGifArray(newKeyWordArray)
         setIsLoading(false)
-
+        // eslint-disable-next-line
     }, [updateArray])
     
 
@@ -272,10 +272,6 @@ function Results() {
         setJustChecking(!justChecking)
         setIsLoading(false)
     }
-
-
-
-
 
 
     console.log(gifArray)
