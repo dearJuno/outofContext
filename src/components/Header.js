@@ -1,29 +1,36 @@
 import popcorn from '../assets/logo.svg';
 import { Link } from 'react-router-dom'
+import ReactDOM from "react-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+
 
 function Header() {
     return (
-        <header className="flexBox">
+        <header>
             <a href="#searchSection" class="skip-link">Skip To Content</a>
-            <div className="wrapper">
+            <div className="headerSec">
+                <div>
+                    {/* ADDED LINK BACK TO HOME PAGE  */}
+                    <div className="logo">
+                    <Link to="/" style={{ textDecoration: 'none' }}>
+                        {/* <LogoSvg /> */}
+                        <img src={popcorn} alt="Popcorn Icon"/>
+                    </Link>
+                    <h1>Out Of Context</h1>
+                    </div>
+                </div>
                 <nav>
                     <ul>
                         <li>
-                            <p>Developer Pics</p>
+                            <p>About</p>
+                        </li>
+                        <li>
+                            <p>My Saves</p>
                         </li>
                     </ul>
+                     <FontAwesomeIcon aria-label="Burger Menu Icon" className="menuBar" icon={faBars} size="2x"/>
                 </nav>
-                <div className="flexBox">
-                    {/* NEED TO DELETE THE STYLING  */}
-                    {/* ADDED LINK BACK TO HOME PAGE  */}
-                    <Link to="/" style={{ textDecoration: 'none' }}>
-                    <div className="logo">
-                        {/* <LogoSvg /> */}
-                        <img src={popcorn} alt="Popcorn Icon"/>
-                    </div>
-                    </Link>
-                    <h1>Out Of Context</h1>
-                </div>
             </div>
         </header>
     )
