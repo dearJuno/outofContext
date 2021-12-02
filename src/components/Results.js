@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"
 import axios from 'axios';
 import { useParams } from "react-router-dom";
 import { trackPromise } from 'react-promise-tracker';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRefresh } from '@fortawesome/free-solid-svg-icons';
 
 function Results() {
 
@@ -286,9 +288,12 @@ function Results() {
 
     console.log(gifArray)
     return (
-        <section className="resultsSection">
+        <section className="resultsSection wrapper">
+            <div className='titleResults'>
+            <h2>GIFs for { } </h2>
+            </div>
             {error && <h2>{error}</h2>}
-            <ul className="results wrapper">
+            <ul className="results">
                 {!error && isLoading && <li><p>Hi</p></li>}
                 
                 { !error &&
@@ -306,7 +311,6 @@ function Results() {
                     })
                     
                 }
-            
 
             </ul>
         </section>

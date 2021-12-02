@@ -1,12 +1,9 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faSearch} from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 import { trackPromise } from 'react-promise-tracker';
-
-
-
 
 import { useNavigate } from "react-router-dom";
 // 1. Create Search bar where user can input movie of choice
@@ -34,8 +31,7 @@ function Search({ setMovieTitle, setMoviePoster }) {
     if (keywordLabels.length) {
       keywordLabels.textContent = ""
     }
-    
-
+  
 
     const apiKeyMov = `786c1383f2a24f7ee0f7ae525d2a9af4`
     // Track Promise for Loader to reference
@@ -67,16 +63,21 @@ function Search({ setMovieTitle, setMoviePoster }) {
 
     // Clear search input field 
     setSearchInput('')
+
+    // function test(params) {
+    //   return movieId
+    // }
+
   }
   return (
     <section className="searchSection" id="searchSection">
         {error && <h2>{error}</h2>}
-      <div className="searchWrapper wrapper">
+      <div>
         <form action="submit" onSubmit={handleSubmit} role="search">
           <label htmlFor="search">Search movie, get GIF's</label>
-          <div className="flexBox">
-            <input type="search" id="search" placeholder="Enter a movie" value={searchInput} onChange={handleSearchInput} required />
-            <button><FontAwesomeIcon icon={faSearch} /><span className="sr-only">Search</span></button>
+          <div>
+            <input type="search" id="search" placeholder="Search Movie" value={searchInput} onChange={handleSearchInput} required />
+            <button><FontAwesomeIcon icon={faSearch} size="1.5x"/><span className="sr-only">Search</span></button>
           </div>
         </form>
       </div>

@@ -3,7 +3,6 @@ import './App.scss';
 import {useEffect} from 'react';
 import Search from './components/Search';
 import Header from './components/Header';
-import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import Results from './components/Results';
 import InfoSection from './components/InfoSection';
@@ -61,7 +60,6 @@ function App() {
               <Results movieTitle={movieTitle} moviePoster={moviePoster} />
         </>
       }/>
-
     </Routes>
     </Router>
   );
