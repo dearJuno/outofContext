@@ -2,6 +2,11 @@ import { useState, useEffect } from "react"
 import axios from 'axios';
 import { useParams } from "react-router-dom";
 
+//trying loading screen 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+ 
+
 function Results() {
 
     const [isLoading, setIsLoading] = useState(false)
@@ -11,6 +16,11 @@ function Results() {
     const [error, setError] = useState('')
     const movieID = useParams()
     const [justChecking, setJustChecking] = useState(false)
+    const [movieTitle, setMovieTitle] = useState('')
+    const [moviePoster, setMoviePoster] = useState('')
+
+    const [loadingIcon, setLoadingIcon] = useState(false)
+
 
     useEffect(() => {
         //Pass movie id to keyword point
@@ -113,6 +123,7 @@ function Results() {
 
     
     useEffect(() => {
+        setLoadingIcon(false)
         setError('')
         // using props we grabbed the updateArray containing the 3 gifs we want to render
         setError('')
@@ -139,7 +150,7 @@ function Results() {
         } else { // right now this message always plays at start of render....
             // error message if initially there are atleast 3 keywords for said movie, but after removing the keywords that don't result in gifs from the api, there are less than 3.
             console.log('hi')
-            return setError('There are not enough keywords for that movie! Please try another one')
+            return setLoadingIcon(true)
         }
 
         for (let i = 0; i < threeGifArray.length; i++) {
@@ -274,16 +285,38 @@ function Results() {
     }
 
 
+    // Grab movie name and movie poster 
+    useEffect(() => {
+
+        const apiKeyMov = `786c1383f2a24f7ee0f7ae525d2a9af4`
+        axios({
+            url: `https://api.themoviedb.org/3/movie/${movieID.movieID}`,
+            params: {
+                api_key: apiKeyMov
+            }
+        }).then(response=> {
+            console.log(response.data)
+            setMovieTitle(response.data.original_title)
+            setMoviePoster(response.data.poster_path)
+        })
+
+    }, [movieID.movieID])
+
     console.log(gifArray)
     return (
 
         <section className="resultsSection wrapper">
-            <div className='titleResults'>
-            <h2>GIFs for { } </h2>
-            </div>
             {error && <h2 className="resultsError">{error}</h2>}
+
+            {!error && loadingIcon && <div className='loaderContainer'><FontAwesomeIcon icon={faSpinner} className='spinner' /></div>}
+            
+            <div className='titleResults'>
+            <h2>GIFs for {movieTitle } </h2>
+            
+            <img src={`https://image.tmdb.org/t/p/original/${moviePoster}`} alt={movieTitle}/>
+            </div>
+            {!error && isLoading && <div className="loader"></div>}
             <ul className="results">
-                      {!error && isLoading && <div className="loader"></div>}
 
                 
                 { !error &&
