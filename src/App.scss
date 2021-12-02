@@ -73,12 +73,20 @@ body, ul, h1, h2, h3, p {
   display: flex;}
 
 .button, a {
-  transition: all 0.1s ease-out;}
+  transition: all 0.1s ease-out;
+  outline: none;
+}
 
 a:focus, 
 input:focus, 
 button:focus {
-outline: 4px solid #6b6eec;
+outline: 2px solid #6b6eec;
+}
+
+a:active, 
+input:active, 
+button:active {
+outline: 1px solid #6b6eec;
 }
 
 input {
@@ -109,157 +117,6 @@ input {
   margin-left: 10px;
 }
 
-// <<<<<<< riley-branch-dec-01
-// header > .wrapper {
-//   align-items: flex-end;
-//   display: flex;
-//   flex-direction: column;
-//   height: 90vh;
-//   justify-content: space-evenly;
-//   padding: 20px 0 50px;
-// }
-
-// header > .wrapper > .flexBox {
-//   width: 100%;
-// }
-
-// .headerPbox {
-//   justify-content: flex-end;
-//   position: relative;
-// }
-
-// .button {
-//   background: radial-gradient(circle, rgba(255,255,255,1) 23%, rgba(142,249,244,0.5) 73%, rgba(142,249,244,0.3) 71%, rgba(150,250,245,1) 100%);
-//   border-radius: 45%;
-//   padding: 27px 28px;
-//   position: absolute;
-//   text-align: center;
-//   right: 5%;
-//   top: 90%;
-// }
-
-// .button:hover {
-//   background-color: #8ef9f4; 
-// }
-// .button:active {
-//   background-color: transparent;
-// }
-
-// .searchSection {
-//   background-color: #141640;
-//   color: #eaeaf0;
-//   padding: 70px 0;
-  
-// }
-
-// form .flexBox {
-//     position: relative;
-// }
-
-// .results {
-//     display: -webkit-box;
-//     display: -ms-flexbox;
-//     display: flex;
-//     -webkit-box-align: center;
-//     -ms-flex-align: center;
-//     align-items: center;
-//     justify-content:space-between;
-//     padding: 40px 0;
-//         p {
-//         padding:20px;
-//         text-transform: capitalize;
-//       }
-// }
-
-// .gifBox {
-//   background-color: gainsboro;
-//   border-radius: 15px;
-//   -webkit-box-shadow: 6px 6px 0px 5px #6B6EEC; 
-//   box-shadow: 6px 8px 0px 1px #6B6EEC;
-//   position: relative;
-//   width: 25vw;
-//   height:40vh;
-// }
-
-// .gifBox p {
-//   text-align: center;
-// }
-
-// .keywordLoad {
-//   translate: 10px 20px;
-// }
-
-// .gifBox img {
-//   cursor: pointer;
-//   object-fit: cover;
-//   overflow: hidden;
-//   display: -webkit-box;
-//   display: -ms-flexbox;
-//   display: flex;
-//   -webkit-box-align: center;
-//   -ms-flex-align: center;
-//   align-items: center;
-//   border-radius: 15px;
-//   width: 25vw;
-//   height:40vh;
-//   box-shadow: 6px 8px 0px 5px #6B6EEC;
-//   transition: opacity 0.1s;
-// }
-
-// .gifBox img:hover {
-//   opacity: 0.5;
-// }
-
-// .gifBox img:active {
-//   opacity: 1;
-// }
-
-// .gifBox input { 
-//   display: block;
-//   position: absolute;
-//   cursor: pointer;
-//   height: 32px;
-//   width: 40px;
-//   opacity: 0; /* hide this */
-//   z-index: 2; /* and place it over the image */
-//   -webkit-touch-callout: none;
-// }
-
-// ul button:focus  {
-//   border: 4px solid white !important;
-//   opacity: 0.5;
-
-// }
-
-// button:focus > img  {
-//   border: 4px solid white !important;
-//   opacity: 0.5;
-
-// }
-
-// .footer {
-//   justify-content: space-between;
-//   padding: 15px 0;
-// }
-
-// .dearJuno {
-//   display: flex;
-// }
-
-// .fa-github, .svg-inline--fa {
-//   margin-left: 5px;
-//   vertical-align: -0.375em;
-// }
-
-// .searchError {
-//   margin: 0 autok 20px;
-//   width: 50vw;
-// }
-
-// .resultsError {
-//   margin: 20px auto;
-//   text-align: center;
-// =======
 // LOADING STATE
 /* don't show loader on initial search */
 header ~ .loader {
@@ -274,7 +131,3 @@ header ~ .loader {
   right: 0;
   
   }
-// <<<<<<< riley-branch-dec-01
-//   height: 56vh;
-//   z-index: 10;
-// }

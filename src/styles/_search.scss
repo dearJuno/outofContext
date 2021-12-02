@@ -2,8 +2,15 @@
 .searchSection {
   background-color: #141640;
   color: #eaeaf0;
-  padding: 50px 0;
+  padding: 50px 0; /* added some padding */
 }
+
+// search error position
+.searchError {
+  margin: 0 auto 20px;
+  width: 50vw;
+}
+
 form {
   align-items: center;
   display: flex;
