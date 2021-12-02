@@ -292,7 +292,8 @@ function Results() {
                         return (
                             <li className="gifBox" key={index} >
                                 <button className="gifButton" onClick={handleImage} disabled={isLoading}>
-                                    <img src={individualGif.gif.images.original.url} alt={individualGif.gif.title} data-index={index} />
+                                    {/* added title att. (title appears as tooltip on hover) */}
+                                    <img src={individualGif.gif.images.original.url} alt={individualGif.gif.title} data-index={index} title={individualGif.gif.title} />
                                 </button>
                                 <button className="keywordButton" onClick={handleKeyword} disabled={isLoading}>
 
