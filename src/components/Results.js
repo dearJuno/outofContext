@@ -295,7 +295,7 @@ function Results() {
             <div className='titleResults'>
             <h2>GIFs for { } </h2>
             </div>
-            {error && <h2>{error}</h2>}
+            {error && <h2 className="resultsError">{error}</h2>}
             <ul className="results">
                       {!error && isLoading && <div className="loader"></div>}
 
@@ -305,10 +305,10 @@ function Results() {
                     gifArray.map(function (individualGif, index) {
                         return (
                             <li className="gifBox" key={index} >
-                                <button onClick={handleImage} disabled={isLoading}>
+                                <button className="gifButton" onClick={handleImage} disabled={isLoading}>
                                     <img src={individualGif.gif.images.original.url} alt={individualGif.gif.title} data-index={index} />
                                 </button>
-                                <button onClick={handleKeyword} disabled={isLoading}>
+                                <button className="keywordButton button" onClick={handleKeyword} disabled={isLoading}>
 
                                     <p data-index={index}>{individualGif.name}</p>
 
