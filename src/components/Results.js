@@ -47,9 +47,6 @@ function Results() {
 
                 // Send All Keywords To keywordClickArray
                 setKeywordClickArray(response.data)
-
-                console.log(keywordArray)
-                console.log(keywordClickArray, 'keywordclickArray first set')
                 
                 // Randomize keywords
                 for (let i = keywordArray.length - 1; i > 0; i--) {
@@ -57,8 +54,10 @@ function Results() {
                     [keywordArray[i], keywordArray[j]] = [keywordArray[j], keywordArray[i]];
                 }
                 console.log(keywordArray)
+
                 // Take only three keywords
                 const threeKeywordArray = keywordArray.slice(0, 3)
+
                 setUpdateKeyword(keywordArray)
 
                 //now return all keywords
@@ -83,7 +82,7 @@ function Results() {
                             // in the case that the giphy api doesnt return any gifs for our selected keyword, we should ? =============================>
                             if (array.length === 0) {
                                 console.log('yo no gifs here')
-
+                            
                             }
                             console.log(array)
                             // Randomize GIF results
@@ -124,6 +123,7 @@ function Results() {
 
     
     useEffect(() => {
+        setError('')
         // using props we grabbed the updateArray containing the 3 gifs we want to render
         setError('')
         console.log('Props is working :)))))))))))))))', updateArray, updateKeyword)
@@ -162,11 +162,12 @@ function Results() {
 
     }, [updateArray])
 
-    
+
         // Update images when clicked
         function handleImage(e) {
             setIsLoading(true)
             let clickedElement
+
             if(e.target.tagName === 'IMG') {
                 clickedElement = e.target
             }else if(e.target.tagName === 'BUTTON') {
@@ -183,6 +184,7 @@ function Results() {
             console.log(attachedKeyword)
 
             const newerNewerArray = gifArray.map(stuff => {return stuff})
+            
             const apiKey = 'vKgSlbA9IvP9mzh808UAXFD7YeIabsQe'
             axios({
                 url: 'https://api.giphy.com/v1/gifs/search',
@@ -288,13 +290,15 @@ function Results() {
 
     console.log(gifArray)
     return (
+
         <section className="resultsSection wrapper">
             <div className='titleResults'>
             <h2>GIFs for { } </h2>
             </div>
             {error && <h2>{error}</h2>}
             <ul className="results">
-                {!error && isLoading && <li><p>Hi</p></li>}
+                      {!error && isLoading && <div className="loader"></div>}
+
                 
                 { !error &&
 
@@ -305,7 +309,9 @@ function Results() {
                                     <img src={individualGif.gif.images.original.url} alt={individualGif.gif.title} data-index={index} />
                                 </button>
                                 <button onClick={handleKeyword} disabled={isLoading}>
-                                    <p  data-index={index}>{individualGif.name}</p>
+
+                                    <p data-index={index}>{individualGif.name}</p>
+
                                 </button>
                             </li>)
                     })
