@@ -3,10 +3,32 @@
 @import './styles/header';
 @import './styles/footer';
 @import './styles/setup'; 
-@import './styles/typography'; 
 @import './styles/results'; 
 @import './styles/info'; 
 @import './styles/search'; 
+
+
+// TYPOGRAPHY ////////////
+body, form button, form input {
+  font-family: 'Lato';
+}
+h1, h2, label {
+  font-weight: 300px;
+  font-family: 'Kanit', sans-serif;
+}
+// HEADER TYPOGRAPHY 
+nav li{
+text-transform: uppercase;
+font-weight: bold;
+}
+nav p:hover{
+color:navy;
+padding-bottom: 2px; 
+border-bottom: navy 2px solid;
+cursor: pointer;
+}
+
+
 
 /* Base Font Size (1rem = 10px) */
 
