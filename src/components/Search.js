@@ -2,14 +2,12 @@ import { useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch} from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom';
 import { trackPromise } from 'react-promise-tracker';
-
 import { useNavigate } from "react-router-dom";
 // 1. Create Search bar where user can input movie of choice
 // 2. Call movie api by movie title which returns id of movie
 
-function Search({ setMovieTitle, setMoviePoster }) {
+function Search() {
 
   const [searchInput, setSearchInput] = useState('')
   const [error, setError] = useState('')

@@ -1,6 +1,5 @@
 import popcorn from '../assets/logo.svg';
 import { Link } from 'react-router-dom'
-import ReactDOM from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
@@ -23,11 +22,13 @@ function Header() {
                 <nav>
                     <ul>
                         <li>
-                            <p>About</p>
+                            <Link to="/aboutus" style={{textDecoration: 'none' }}>
+                                About
+                            </Link>
                         </li>
-                        <li>
-                            <p>My Saves</p>
-                        </li>
+                        {/* <li>
+                            <a href="#">My Saves</a>
+                        </li> */}
                     </ul>
                      <FontAwesomeIcon aria-label="Burger Menu Icon" className="menuBar" icon={faBars} size="2x"/>
                 </nav>
