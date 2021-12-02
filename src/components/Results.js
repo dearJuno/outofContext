@@ -1,17 +1,12 @@
 import { useState, useEffect } from "react"
 import axios from 'axios';
 import { useParams } from "react-router-dom";
-import { trackPromise } from 'react-promise-tracker';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRefresh } from '@fortawesome/free-solid-svg-icons';
 
 function Results() {
 
     const [isLoading, setIsLoading] = useState(false)
     const [updateKeyword, setUpdateKeyword] = useState([])
     const [updateArray, setUpdateArray] = useState([])
-    // Keyword Bank for click change
-    const [keywordClickArray, setKeywordClickArray] = useState([])
     const [gifArray, setGifArray] = useState([])
     const [error, setError] = useState('')
     const movieID = useParams()
@@ -45,8 +40,6 @@ function Results() {
                     keywordArray.push(response.data.keywords[keyName].name)
                 }
 
-                // Send All Keywords To keywordClickArray
-                setKeywordClickArray(response.data)
                 
                 // Randomize keywords
                 for (let i = keywordArray.length - 1; i > 0; i--) {
@@ -54,9 +47,6 @@ function Results() {
                     [keywordArray[i], keywordArray[j]] = [keywordArray[j], keywordArray[i]];
                 }
                 console.log(keywordArray)
-
-                // Take only three keywords
-                const threeKeywordArray = keywordArray.slice(0, 3)
 
                 setUpdateKeyword(keywordArray)
 
@@ -161,7 +151,7 @@ function Results() {
         setIsLoading(false)
 
     }, [updateArray])
-
+    
 
         // Update images when clicked
         function handleImage(e) {
@@ -306,6 +296,7 @@ function Results() {
                         return (
                             <li className="gifBox" key={index} >
                                 <button className="gifButton" onClick={handleImage} disabled={isLoading}>
+                                    <h6>Click <span>Me!</span></h6>
                                     <img src={individualGif.gif.images.original.url} alt={individualGif.gif.title} data-index={index} />
                                 </button>
                                 <button className="keywordButton" onClick={handleKeyword} disabled={isLoading}>
