@@ -1,35 +1,45 @@
-// RESULTS PAGE 
+// Results Page 
+.titleResults {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+      h2 {
+        font-size:2rem;
+      }
+  }
+
 .results {
     display: flex;
     align-items: center;
+    margin:auto 0;
     justify-content:space-between;
     padding: 40px 0;
+
         p {
-        padding:20px;
+        padding:50px;
         text-transform: capitalize;
       }
-}
 
-.gifBox {
-  background-color: gainsboro;
-  border-radius: 15px;
-  -webkit-box-shadow: 6px 6px 0px 5px #6B6EEC; 
-  box-shadow: 6px 8px 0px 1px #6B6EEC;
-  width: 25vw;
-  height:40vh;
-}
+            .gifBox {
+              background-color: gainsboro;
+              border-radius: 15px;
+              -webkit-box-shadow: 6px 10px 0px 5px #6B6EEC; 
+              box-shadow: 12px 10px 0px 5px #6B6EEC;
+              width: 25vw;
+              height:40vh;
+            }
 
-.gifBox p {
-  text-align: center;
-}
+            .gifBox p {
+              text-align: center;
+            }
 
-.gifBox img {
-  object-fit: cover;
-  overflow: hidden; 
-  display: flex;
-  align-items: center;
-  border-radius: 15px;
-  width: 25vw;
-  height:40vh;
-  box-shadow: 6px 8px 0px 5px #6B6EEC;
-}
+            .gifBox img {
+              object-fit: cover;
+              overflow: hidden; 
+              display: flex;
+              align-items: center;
+              border-radius: 15px;
+              width: 25vw;
+              height:40vh;
+            }
+  }
