@@ -296,7 +296,6 @@ function Results() {
                         return (
                             <li className="gifBox" key={index} >
                                 <button className="gifButton" onClick={handleImage} disabled={isLoading}>
-                                    <h6>Click <span>Me!</span></h6>
                                     <img src={individualGif.gif.images.original.url} alt={individualGif.gif.title} data-index={index} />
                                 </button>
                                 <button className="keywordButton" onClick={handleKeyword} disabled={isLoading}>
