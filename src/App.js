@@ -60,7 +60,6 @@ function App() {
               <Results updateArray={updateArray} updateKeyword={updateKeyword} />
         </>
       }/>
-
     </Routes>
     </Router>
   );

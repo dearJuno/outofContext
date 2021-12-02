@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"
 import axios from 'axios';
 import { useParams } from "react-router-dom";
 import { trackPromise } from 'react-promise-tracker';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRefresh } from '@fortawesome/free-solid-svg-icons';
 
 function Results() {
 
@@ -145,7 +147,7 @@ function Results() {
             const rndInt = randomIntFromInterval(0, keywordClickArray.keywords.length)
 
             console.log(keywordsToUse[rndInt], 'random choice')
-           
+
             const apiKey = 'vKgSlbA9IvP9mzh808UAXFD7YeIabsQe'
             // Track Promise for Loader to reference
             trackPromise(axios({
@@ -170,18 +172,14 @@ function Results() {
             }));
             
         }
-    
-    
-
-
-    
     return (
-        <section className="resultsSection">
+        <section className="resultsSection wrapper">
+            <div className='titleResults'>
+            <h2>GIFs for { } </h2>
+            </div>
             {error && <h2>{error}</h2>}
-            <ul className="results wrapper">
-
+            <ul className="results">
                 { !error &&
-
                     gifArray.map(function (individualGif) {
                         return (
                             <li className="gifBox">
@@ -191,7 +189,6 @@ function Results() {
                     })
                     
                 }
-            
 
             </ul>
         </section>

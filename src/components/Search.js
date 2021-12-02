@@ -5,9 +5,6 @@ import { faSearch} from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 import { trackPromise } from 'react-promise-tracker';
 
-
-
-
 import { useNavigate } from "react-router-dom";
 // 1. Create Search bar where user can input movie of choice
 // 2. Call movie api by movie title which returns id of movie
@@ -34,8 +31,7 @@ function Search({ setUpdateArray, setUpdateKeyword }) {
     if (keywordLabels.length) {
       keywordLabels.textContent = ""
     }
-    
-
+  
 
     const apiKeyMov = `786c1383f2a24f7ee0f7ae525d2a9af4`
     // Track Promise for Loader to reference
@@ -66,6 +62,11 @@ function Search({ setUpdateArray, setUpdateKeyword }) {
 
     // Clear search input field 
     setSearchInput('')
+
+    // function test(params) {
+    //   return movieId
+    // }
+
   }
   return (
     <section className="searchSection" id="searchSection">
