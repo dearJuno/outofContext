@@ -7,7 +7,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 function Header() {
     return (
         <header>
-            <a href="#searchSection" class="skip-link">Skip To Content</a>
+            <a href="#searchSection" className="skip-link">Skip To Content</a>
             <div className="headerSec">
                 <div>
                     {/* ADDED LINK BACK TO HOME PAGE  */}
@@ -15,8 +15,9 @@ function Header() {
                     <Link to="/" style={{ textDecoration: 'none' }}>
                         {/* <LogoSvg /> */}
                         <img src={popcorn} alt="Popcorn Icon"/>
+                        {/* added hidden label to clarify it's a home link for screen readers */}
+                            <h1>Out Of Context<span className="sr-only"> Home</span></h1>
                     </Link>
-                    <h1>Out Of Context</h1>
                     </div>
                 </div>
                 <nav>

@@ -1,44 +1,59 @@
 // HEADER //////////////
-.headerSec{
+.headerSec {
   padding: 20px 20px; 
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  nav li{
+  nav li {
     display: inline-block; 
     padding-left: 20px;
   }
 }
-.logo{
+.logo a {
   display: flex;
-  img{
+  img {
     width:80px; 
     height:80px; 
   }
+    h1 {
+    align-self: center;
+  }
 }
 
-h1{
- align-self: center;
+// no focus outline on popcorn/h1 home link
+.logo a:focus {
+  outline: none;
 }
 
-.logo img:hover{
+// bottom border on h1 when link is in focus
+.logo a:focus h1 {
+  border-bottom: 3px solid #141640;
+}
+
+// grow popcorn on hover and focus
+.logo img:hover, .logo a:focus img {
   transform: scale(1.1);
 }
 
-.menuBar{
+// shrink popcorn back when clicked
+.logo a:active img {
+  transform: scale(1);
+}
+
+.menuBar {
   display: none;
   color: navy;; 
 }
 
-@media (max-width:630px){
-  .menuBar{
+@media (max-width: 630px) {
+  .menuBar {
     display: block;
     align-self: center;
   }
 
-  .headerSec{
-      nav li{
+  .headerSec {
+      nav li {
         display: none; 
     }
   }
