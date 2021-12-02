@@ -48,15 +48,12 @@ function App() {
       <Route path='/' element={<> 
         <Header/>
         <InfoSection/>
-        <Search setUpdateArray={setUpdateArray} setUpdateKeyword={setUpdateKeyword} />
         <Search setmovieTitle={setmovieTitle} setMoviePoster={setMoviePoster}/>
         <Footer/>
       </>}/>
       <Route path="movie/:movieID" element={
         <>          
         <Header/>
-              <Search setUpdateArray={setUpdateArray} setUpdateKeyword={setUpdateKeyword} /> 
-              <Results updateArray={updateArray} updateKeyword={updateKeyword} />
               <Search setmovieTitle={setmovieTitle} setMoviePoster={setMoviePoster} /> 
               {/* moved ul to App.js because we only want one to render */}
             
