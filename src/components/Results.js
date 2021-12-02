@@ -294,7 +294,7 @@ function Results() {
 
                     gifArray.map(function (individualGif, index) {
                         return (
-                            <li className="gifBox" key={index} >
+                            <li className="gifBox wrapper" key={index} >
                                 <button className="gifButton" onClick={handleImage} disabled={isLoading}>
                                     <img src={individualGif.gif.images.original.url} alt={individualGif.gif.title} data-index={index} />
                                 </button>
