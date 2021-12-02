@@ -2,7 +2,7 @@ import reel from '../assets/filmreel.png'
 
 function InfoSection() {
     return (
-        <div>
+        <div className="infoSection">
             <h2>A GIF generator for your favourite flix</h2>
             <div className="headerPbox flexBox">
                 {/* NEED TO DELETE THE STYLING  */}
