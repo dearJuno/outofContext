@@ -11,7 +11,7 @@ import silentvoice from '../assets/asilentvoicemp.jpg'
 function About() {
     return (
         <section>
-            <h1 className='aboutUsH1 devWrap'>Dev Info</h1>
+            <h1 className='aboutUsH1 devWrap'>Contact Us</h1>
             <section>
             <div className="devProfile devWrap">
                 <div className="devInfo">
@@ -23,7 +23,7 @@ function About() {
                             <li><a href="https://www.linkedin.com/in/dan-tran-b2b925226/">LinkedIn</a></li>
                             <li><a href="https://twitter.com/Dan_Huy_Tran">Twitter</a></li>
                             <li><a href="https://github.com/amia-real">Github</a></li>
-                        <li><p><span>Fav Movie: </span> A Silent Voice</p></li>
+                        <li><p><span>Fav Movie:</span> A Silent Voice</p></li>
                     </ul>
                 </div>
                 <div className='imageContainer'>
