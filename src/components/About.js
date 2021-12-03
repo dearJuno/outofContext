@@ -3,7 +3,6 @@ function About() {
         <section>
             <h1>Dev Info</h1>
             <section>
-                {/* DAN PROFILE  */}
             <div className="devProfile">
                 <div className="devInfo">
                     <img src="" alt="Headshot of Dev. Dan Tran"/>
@@ -17,7 +16,6 @@ function About() {
                 </div>
                 <img src="" alt="Movie Poster for "/>
                 </div>
-                {/* EMILY PROFILE  */}
                 <div className="devProfile">
                 <div className="devInfo">
                     <img src="" alt="Headshot of Dev. Emily Mernik"/>
@@ -31,7 +29,6 @@ function About() {
                 </div>
                 <img src="" alt="Movie Poster for Parasite"/>
                 </div>
-                {/* AILEEN PROFILE */}
                 <div className="devProfile">
                 <div className="devInfo">
                     <img src="" alt="Headshot of Dev. Aileen Nunez"/>
@@ -45,7 +42,6 @@ function About() {
                 </div>
                 <img src="" alt="Movie Poster for "/>
                 </div>
-                {/* RILEY PROFILE  */}
                 <div className="devProfile">
                 <div className="devInfo">
                     <img src="" alt="Headshot of Dev. Riley Hoffman"/>

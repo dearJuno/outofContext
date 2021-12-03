@@ -3,19 +3,15 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-
 function Header() {
     return (
         <header>
             <a href="#searchSection" className="skip-link">Skip To Content</a>
             <div className="headerSec">
                 <div>
-                    {/* ADDED LINK BACK TO HOME PAGE  */}
                     <div className="logo">
                     <Link to="/" style={{ textDecoration: 'none' }}>
-                        {/* <LogoSvg /> */}
                         <img src={popcorn} alt="Popcorn Icon"/>
-                        {/* added hidden label to clarify it's a home link for screen readers */}
                             <h1>Out Of Context<span className="sr-only"> Home</span></h1>
                     </Link>
                     </div>
@@ -27,11 +23,8 @@ function Header() {
                                 About
                             </Link>
                         </li>
-                        {/* <li>
-                            <a href="#">My Saves</a>
-                        </li> */}
                     </ul>
-                     <FontAwesomeIcon aria-label="Burger Menu Icon" className="menuBar" icon={faBars} size="2x"/>
+                    <FontAwesomeIcon aria-label="Burger Menu Icon" className="menuBar" icon={faBars} size="2x"/>
                 </nav>
             </div>
         </header>
