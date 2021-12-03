@@ -311,8 +311,10 @@ function Results() {
             {!error && loadingIcon && <div className='loaderContainer'><FontAwesomeIcon icon={faSpinner} className='spinner' /></div>}
             
             <div className='titleResults'>
-            <h2>GIFs for {movieTitle } </h2>
-            
+                <div>
+                <h2>If you could describe the plot of {movieTitle} in 3 Gifs... what would they be?</h2>
+                <p>Feel free to click through the Gifs or plot keywords to make the experience yours ☺️</p>
+                </div>
             <img src={`https://image.tmdb.org/t/p/original/${moviePoster}`} alt={movieTitle}/>
             </div>
             {!error && isLoading && <div className="loader"></div>}
