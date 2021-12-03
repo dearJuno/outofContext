@@ -8,8 +8,8 @@ function Footer() {
             <div className="wrapper flexBox footer">
                 <a href="https://junocollege.com/">Created at Juno College</a>
                     <a className="dearJuno" href="https://github.com/dearJuno">
-                        dearJuno |
-                        <FontAwesomeIcon icon={faGithub} />
+                        dearJuno
+                    <FontAwesomeIcon icon={faGithub} />
                     </a>
             </div>
         </footer>

@@ -51,6 +51,24 @@ nav li{
   color: navy;; 
 }
 
+
+@media (max-width: 600px) {
+  header {
+    height: 40vh;
+  }
+
+  .headerSetion {
+    position: relative;
+  }
+
+  nav {
+    position: absolute;
+    right: 34%;
+    top: 28%;
+  }
+
+}
+
 //🚨💥 Leaving Burger Menu for Later Updates  
 // @media (max-width:630px){
 //   .menuBar{

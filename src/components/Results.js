@@ -268,12 +268,12 @@ function Results() {
             <img src={`https://image.tmdb.org/t/p/original/${moviePoster}`} alt={movieTitle}/>
             </div>
             {!error && isLoading && <div className="loader"></div>}
-            <ul className="gifResults">
+            <ul className="gifResults wrapper">
                 { !error &&
 
                     gifArray.map(function (individualGif, index) {
                         return (
-                            <li className="gifBox wrapper" key={index} >
+                            <li className="gifBox" key={index} >
                                 <button className="gifButton" onClick={handleImage} disabled={isLoading}>
                                     <img src={individualGif.gif.images.original.url} alt={individualGif.gif.title} data-index={index} title={individualGif.gif.title} />
                                 </button>

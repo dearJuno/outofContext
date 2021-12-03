@@ -82,3 +82,24 @@ form button:active svg {
   color: initial; 
   outline: none;
 }
+@media (max-width: 900px) {
+  
+    .searchBar {
+      max-width: 100%;
+      margin-left: 20px;
+      input {
+        max-width: 91%;
+      }
+      button {
+        left: 75%;
+      }
+    }
+}
+
+@media (max-width: 500px) {
+
+.searchSection label { 
+    width: 90%; 
+  }
+
+}
