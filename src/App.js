@@ -15,8 +15,6 @@ function App() {
   // const [movieTitle, setmovieTitle] = useState('')
   // const [moviePoster, setMoviePoster] = useState('')
 
-  //trying to change the keyword title for the GIFS 
-  // const [] = useState('')
 
   return (
     <Router>
@@ -31,7 +29,6 @@ function App() {
       <Route path="movie/:movieID" element={
         <>          
               <Search/> 
-              {/* moved ul to App.js because we only want one to render */}
               <Results/>
         </>
       } />

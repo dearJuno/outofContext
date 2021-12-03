@@ -12,7 +12,6 @@ function Search() {
   const [searchInput, setSearchInput] = useState('')
   const [error, setError] = useState('')
 
-  // const [keyword] = useState ('')
   const navigate = useNavigate();
  
 
@@ -66,11 +65,6 @@ function Search() {
     // Clear search input field 
     setSearchInput('')
 
-
-    // function test(params) {
-    //   return movieId
-    // }
-
   }
  
  
@@ -83,7 +77,7 @@ function Search() {
           <label htmlFor="search">Search movie, get GIF's</label>
           <div>
             <input type="search" id="search" placeholder="Search Movie" value={searchInput} onChange={handleSearchInput} required />
-            <button><FontAwesomeIcon icon={faSearch} /* size="1.5x" apple voice over announced an invalid prop here looked it up and apparently it doesn't take decimal only integers. we it was rendering for us as 1X */ /><span className="sr-only">Search</span></button>
+            <button><FontAwesomeIcon icon={faSearch} /><span className="sr-only">Search</span></button>
           </div>
         </form>
       </div>

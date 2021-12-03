@@ -10,12 +10,9 @@ function Header() {
             <a href="#searchSection" className="skip-link">Skip To Content</a>
             <div className="headerSec">
                 <div>
-                    {/* ADDED LINK BACK TO HOME PAGE  */}
                     <div className="logo">
                     <Link to="/" style={{ textDecoration: 'none' }}>
-                        {/* <LogoSvg /> */}
                         <img src={popcorn} alt="Popcorn Icon"/>
-                        {/* added hidden label to clarify it's a home link for screen readers */}
                             <h1>Out Of Context<span className="sr-only"> Home</span></h1>
                     </Link>
                     </div>
