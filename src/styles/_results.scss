@@ -1,105 +1,115 @@
-// Results Page 
+//Results Section Styling
 
 .resultsSection {
   padding: 50px 0px 100px 0px;
 }
 
-.resultsError {
-        margin: 20px auto;
-        text-align: center;
-      }
-
-.titleResults {
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-      h2 {
-        font-size:2rem;
-        color:navy; 
-      }
-      img {
-        width: 25%;
-      }
-      p{
-        font-size:1.5rem;
-        padding-top: 10px;
-        color:white; 
-      }
-  }
-  //Aileen's Edits for Movie Title 
-  .titleResults {
-    border:10px navy solid; 
-    border-radius: 10px;
-    position: relative;
-    left: -2000px;
-    animation: slide 0.5s forwards;
-    animation-delay: 2s; 
-    background: rgb(107,110,236);
-    background: linear-gradient(330deg, rgba(107,110,236,1) 0%, rgba(211,242,255,1) 100%); 
-    padding:20px; 
-  }
-  
-  @-webkit-keyframes slide {
-    100% { left: 0; }
-  }
-  
-  @keyframes slide {
-    100% { left: 0; }
-  }
-
-.results {
-    padding: 40px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap:40px; 
-    justify-content:center;
-
-        p {
-        padding:50px;
-        text-transform: capitalize;
-      }
-
-            .gifBox p {
-              text-align: center;
-            }
-
-            .gifBox img {
-              cursor: pointer;
-              border-radius: 15px;
-              width: 25vw;
-              height:40vh;
-              transition: opacity 0.1s;
-            }
-  }
-
-.gifBox {
-  border-radius: 15px;
-//     -webkit-box-shadow: 6px 20px 0px 5px #6B6EEC; 
-  box-shadow: 25px 10px 0px 10px #6B6EEC;
-  position: relative;
-  width: 25vw;
-  height: 40vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+// trying animation for loader
+.loaderContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-// GIF Results 
-// left button mostly not visible till we know if we want to do more with it
+.spinner {
+  animation: spin infinite 2s linear;
+  font-size: 100px;
+  /*You can increase or decrease the timer (5s) to
+  increase or decrease the speed of the spinner*/
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.titleResults {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  border: 10px #141640 solid;
+  border-radius: 10px;
+  position: relative;
+  left: -2000px;
+  animation: slide 0.5s forwards;
+  background: rgb(107, 110, 236);
+  background: linear-gradient(
+    330deg,
+    rgba(107, 110, 236, 1) 0%,
+    rgba(211, 242, 255, 1) 100%
+  );
+}
+.titleResults {
+  h2 {
+    font-size: 2rem;
+    color: #141640;
+  }
+  img {
+    width: 25%;
+  }
+  p {
+    font-size: 1.5rem;
+    padding-top: 10px;
+    color: white;
+  }
+}
+
+@keyframes slide {
+  100% {
+    left: 0;
+  }
+}
+.resultsError {
+  margin: 20px auto;
+  text-align: center;
+}
+.gifResults {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 40px;
+  justify-content: center;
+  grid-gap: 80px;
+}
+.gifBox,
+.gifBox img {
+  border-radius: 15px;
+  width: 25vw;
+  height: 40vh;
+}
+.gifBox {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gifBox img {
+  cursor: pointer;
+  transition: opacity 0.1s;
+  min-width: 307px;
+  min-height: 355px;
+  border-right: 10px #6b6eec solid;
+  border-bottom: 10px #6b6eec solid;
+}
 .gifButton {
   border-radius: 15px;
   border: none;
   background: none;
-  justify-content:center;
+  justify-content: center;
 }
 
-.gifButton:focus img  {
-  border: 4px solid white;
+.gifButton:focus img {
+  border: 4px solid #141640;
 }
 
-.gifButton:hover{
-  img{
-    border: 4px solid;
+.gifButton:hover {
+  img {
+    border: 4px solid #141640;
     opacity: 0.5;
   }
 }
@@ -110,59 +120,47 @@
 
 .keywordButton {
   padding: 10px 40px;
-  margin-top: 20px;
-  background: radial-gradient(circle, rgba(255,255,255) 30%, rgba(142,249,244,0.3) 71%, rgba(150,250,245,1) 100%);
+  margin-top: 50px;
+  box-shadow: none;
   border-radius: 30px;
+  text-align: center;
+  align-items: center;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255) 30%,
+    rgba(142, 249, 244, 0.3) 71%,
+    rgba(150, 250, 245, 1) 100%
+  );
+}
+
+.keywordButton p {
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+  padding: 0;
   text-align: center;
 }
 
-.keywordButton p{
-  font-weight: bold;
-  letter-spacing: 2px;
-}
-  
-  .gifBox p {
-    padding: 0;
-    text-align: center;
-  }
-
-// trying animation for loader
-.spinner {
-  animation: spin infinite 2s linear;
-  font-size: 100px;
-  /*You can increase or decrease the timer (5s) to
-  increase or decrease the speed of the spinner*/
-
-}
-@keyframes spin {
-from {
-  transform: rotate(0deg);
-}
-to {
-  transform: rotate(360deg);
-}
-}
-
-.loaderContainer {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.keywordButton:focus {
+  border: 4px solid #8ef9f4;
 }
 
 // +++++++++++++++++
 
-@media(max-width:1110px){
-  .results{
+@media (max-width: 1110px) {
+  .gifResults {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 120px;
+  }
+  .keywordButton {
+    margin-top: 25px;
   }
 }
 
-@media(max-width:980px){
-  .titleResults{
-    grid-gap:100px; 
-    img{
+@media (max-width: 980px) {
+  .titleResults {
+    img {
       display: none;
     }
   }
