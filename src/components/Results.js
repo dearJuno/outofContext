@@ -1,24 +1,30 @@
 import { useState, useEffect } from "react"
 import axios from 'axios';
 import { useParams } from "react-router-dom";
-
-//trying loading screen 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
- 
+
 
 function Results() {
-
+// isLoading is a state to check if our API calls are still loading 
     const [isLoading, setIsLoading] = useState(false)
+// updateKeyword holds the array of all the key words that pertain to the searched movie 
     const [updateKeyword, setUpdateKeyword] = useState([])
+// updateArray holds one GIF per keyword
     const [updateArray, setUpdateArray] = useState([])
+// gifArray that holds the three GIFs and their corresponding keywords
     const [gifArray, setGifArray] = useState([])
+//error holds the error message if there is one
     const [error, setError] = useState('')
+// movieID that comes from the URL
     const movieID = useParams()
+//justChecking making sure the page rerenders after the onClick functions
     const [justChecking, setJustChecking] = useState(false)
+//movieTitle title for the movie
     const [movieTitle, setMovieTitle] = useState('')
+//moviePoster to retrieve the movie poster
     const [moviePoster, setMoviePoster] = useState('')
-
+//loadingIcon determines when the loading icon is rendering 
     const [loadingIcon, setLoadingIcon] = useState(false)
 
 
@@ -34,40 +40,36 @@ function Results() {
             }
         })
             .then((response) => {
-                console.log(response.data)
 
                 if (response.data.keywords.length === 0) {
                     return setError('This movie does not contain any keywords with which to grab gifs with')
                 }
-                // What should we do if there is only 1 or 2 keywords in the array : right now it just goes through normally (ie: sam) ========================>
+
                 if (response.data.keywords.length <= 2) {
                     return setError('There are not enough keywords to display 3 gifs for this movie!')
                 }
-                // An array to hold keywords
-                
                 const keywordArray = []
+                // An array to hold keywords
                 for (let keyName in response.data.keywords) {
                     keywordArray.push(response.data.keywords[keyName].name)
                 }
-
                 
                 // Randomize keywords
                 for (let i = keywordArray.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
                     [keywordArray[i], keywordArray[j]] = [keywordArray[j], keywordArray[i]];
                 }
-                console.log(keywordArray)
 
                 setUpdateKeyword(keywordArray)
 
-                //now return all keywords
+                // Now return all keywords
                 return keywordArray
             })
             .then((response) => {
                 console.log(response)
                 // Pass each keyword to GIPHY API
                 const test = response.map(keyword => {
-                    //taking keyword and using the keyword to make call to Giph API 
+                    //taking keyword and using the keyword to make call to Giphy API 
                     const apiKey = 'vKgSlbA9IvP9mzh808UAXFD7YeIabsQe'
                     return (
                         axios({
@@ -79,85 +81,65 @@ function Results() {
                         }
                         ).then((response) => {
                             const array = response.data.data
-                            // in the case that the giphy api doesnt return any gifs for our selected keyword, we should ? =============================>
-                            if (array.length === 0) {
-                                console.log('yo no gifs here')
-                            
-                            }
-                            console.log(array)
+
                             // Randomize GIF results
-                            //one gif per keyword
+                            // one gif per keyword
                             const random = array[Math.floor(Math.random() * array.length)]
                             //pushing three single gifs to empty array made at top
                             return random
-                            //state is expecting an array and now we have an array 
-
-
+                            // state is expecting an array and now we have an array 
                             
                         }).catch(error => {
-                            console.log(error)
                             return error
-
                         }))
-                    
+                   
                 })
 
-                console.log(test, 'This is promise array')
                 // wrapped our test array in a promise.all function to be able to resolve the promises and display the results
                 Promise.all(test).then((noPromise) => {
-                    console.log(noPromise, "This is value")
-                    // in the case that the value from api is undefined
-
                     // update the state of the prop coming from the main app.js
                     setUpdateArray(noPromise)
 
                 })
             }
             ).catch(error => {
-                console.log(error)
                 return error
             })
-    
      
     }, [movieID.movieID])
 
-    
+
     useEffect(() => {
         setLoadingIcon(false)
         setError('')
-        // using props we grabbed the updateArray containing the 3 gifs we want to render
-        setError('')
-        console.log('Props is working :)))))))))))))))', updateArray, updateKeyword)
+
         const newKeyWordArray = []
 
         // remove any cases of undefined values
         for ( let i = updateKeyword.length - 1; i >= 0; i--) {
             if (updateArray[i] === undefined) {
-                console.log('removed a value!')
                 updateArray.splice(i, 1)
                 updateKeyword.splice(i, 1)
             }
         }
+
         // slice the value so we are only left with 3 gifs with 3 matching keywords
 
         let threeKeywordArray;
         let threeGifArray;
-        console.log(updateArray.length)
         if (updateArray.length >= 3) {
             threeKeywordArray = updateKeyword.slice(0, 3)
             threeGifArray = updateArray.slice(0, 3)
 
-        } else { // right now this message always plays at start of render....
-            // error message if initially there are atleast 3 keywords for said movie, but after removing the keywords that don't result in gifs from the api, there are less than 3.
-            console.log('hi')
+        } else {
             return setLoadingIcon(true)
         }
 
         for (let i = 0; i < threeGifArray.length; i++) {
             newKeyWordArray.push({ name: threeKeywordArray[i], gif: threeGifArray[i] })
         }
-        console.log(threeKeywordArray, 'updateKeyword')
-        console.log(threeGifArray, 'updateArray')
+    
+        //Comment on 145 is to override the errorin order to deploy site on Netlify
         setGifArray(newKeyWordArray)
         setIsLoading(false)
         // eslint-disable-next-line
@@ -174,15 +156,12 @@ function Results() {
             }else if(e.target.tagName === 'BUTTON') {
                 clickedElement = e.target.children[0]
             }
-            console.log(clickedElement.dataset.index)
- 
-            console.log (clickedElement.currentSrc)
-            // console.log(gifArray.findIndex(x => x.gif.images.original.url === e.target.currentSrc))
-            // const index = gifArray.findIndex(x => x.gif.images.original.url === clickedElement.currentSrc)
+        
+
+            // checking to see which of the three GIFs were clicked by the user
             const index = clickedElement.dataset.index
             
             const attachedKeyword =  gifArray[index].name  
-            console.log(attachedKeyword)
 
             const newerNewerArray = gifArray.map(stuff => {return stuff})
             
@@ -196,14 +175,9 @@ function Results() {
             }
             ).then((response) => {
                 const array = response.data.data
-                // in the case that the giphy api doesnt return any gifs for our selected keyword, we should ? =============================>
-                if (array.length === 0) {
-                    console.log('yo no gifs here')
 
-                }
-                console.log(array)
                 // Randomize GIF results
-                //one gif per keyword
+                // one gif per keyword
                 const random = array[Math.floor(Math.random() * array.length)]
                 //pushing three single gifs to empty array made at top
 
@@ -214,40 +188,31 @@ function Results() {
                 
             })
             
-
         }
 
-    // logic is not fully there for when you start changing a lot...
+        // Ensure that none of the keywords we get back when the user clicks, is the same as the other two (or it doesn't choose itself again)
     function handleKeyword (e) {
         // first find all indexes 
         setIsLoading(true)
         const indexArray = []
-
-    
+        // Ensuring the three GIFS are all different 
         gifArray.forEach(ele => {
-            console.log(ele)
             indexArray.push(updateKeyword.indexOf(ele.name)) 
         })
-        console.log( indexArray)
-        // sort indexes from smallest to largest
+        // sort indexes from smallest to largest in order to
         indexArray.sort(function(a, b) {
             return a - b;
-          });
-          
-        console.log(indexArray)
+        })
 
         // remove the keywords from
         const newSplicedGifs = updateArray.map(stuff => {return stuff})
         const newSplicedKeywords = updateKeyword.map(stuff => {return stuff})
+        //scan through array to find index positions 
         for (let i = indexArray.length -1; i >= 0; i--)
         {newSplicedKeywords.splice(indexArray[i],1);
         newSplicedGifs.splice(indexArray[i],1)}
-        console.log(updateKeyword)
-        console.log(newSplicedKeywords)
 
         let newIndex = Math.floor(Math.random()*newSplicedKeywords.length)
-
-        console.log(e)
 
         let newClickedElement
         if(e.target.tagName === 'P') {
@@ -255,24 +220,12 @@ function Results() {
         }else if(e.target.tagName === 'BUTTON') {
             newClickedElement = e.target.children[0]
         }
-        console.log(newClickedElement.dataset.index)
-
-
-        console.log( e.target.innerHTML)
 
         // grab index of keyword clicked
-        console.log(gifArray.findIndex(x => x.name === e.target.innerHTML))
         const index = newClickedElement.dataset.index
 
         //create copy of gifArray
         const newerArray = gifArray
-
-        // grab new keyword and gif
-        // const newIndex = Math.floor(Math.random()*(updateKeyword.length-4) + 4)
-        // let newIndex = Math.floor(Math.random()*(updateKeyword.length-4) + 4)
-
-
-
         const newKeyword = newSplicedKeywords[newIndex];
         const newGif = newSplicedGifs[newIndex];
 
@@ -302,7 +255,6 @@ function Results() {
 
     }, [movieID.movieID])
 
-    console.log(gifArray)
     return (
 
         <section className="resultsSection wrapper">
@@ -311,7 +263,7 @@ function Results() {
             {!error && loadingIcon && <div className='loaderContainer'><FontAwesomeIcon icon={faSpinner} className='spinner' /></div>}
             
             <div className='titleResults'>
-            <h2>GIFs for {movieTitle } </h2>
+            <h2>GIFs for {movieTitle} </h2>
             
             <img src={`https://image.tmdb.org/t/p/original/${moviePoster}`} alt={movieTitle}/>
             </div>
@@ -325,17 +277,13 @@ function Results() {
                         return (
                             <li className="gifBox wrapper" key={index} >
                                 <button className="gifButton" onClick={handleImage} disabled={isLoading}>
-                                    {/* added title att. (title appears as tooltip on hover) */}
                                     <img src={individualGif.gif.images.original.url} alt={individualGif.gif.title} data-index={index} title={individualGif.gif.title} />
                                 </button>
                                 <button className="keywordButton" onClick={handleKeyword} disabled={isLoading}>
-
                                     <p data-index={index}>{individualGif.name}</p>
-
                                 </button>
                             </li>)
-                    })
-                    
+                    })              
                 }
 
             </ul>

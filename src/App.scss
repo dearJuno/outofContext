@@ -8,7 +8,7 @@
 @import './styles/search'; 
 
 
-// TYPOGRAPHY ////////////
+////////// TYPOGRAPHY ////////////
 body, form button, form input {
   font-family: 'Lato';
 }
@@ -16,6 +16,7 @@ h1, h2, label {
   font-weight: 300px;
   font-family: 'Kanit', sans-serif;
 }
+
 // HEADER TYPOGRAPHY 
 nav li{
 text-transform: uppercase;
@@ -27,10 +28,6 @@ padding-bottom: 2px;
 border-bottom: navy 2px solid;
 cursor: pointer;
 }
-
-
-
-/* Base Font Size (1rem = 10px) */
 
 html {
   font-size: 125%}
@@ -55,11 +52,7 @@ body, ul, h1, h2, h3, p {
   img { 
     width: 100%; 
     height: auto;  
-    //Took out inline block
   } 
-
-
-  // time { font-weight: bold; }
 
 /* Convenient Classes */
 
@@ -93,15 +86,13 @@ input:focus {
 a:active, 
 input:active, 
 button:active {
-outline: 0px solid #6b6eec;
+  outline: 1px solid #6b6eec;
 }
 
 input {
     border-radius:30px;
     padding:10px 50px;
 }
-
-
 
 //SKIP TO CONTENT 
 .skip-link {
@@ -125,10 +116,8 @@ input {
 }
 
 // LOADING STATE
-/* don't show loader on initial search */
 header ~ .loader {
   display: none;
-// >>>>>>> main
 }
 .loader {
   position: absolute;
@@ -136,5 +125,4 @@ header ~ .loader {
   background-color: #6B6EEC;
   left: 0;
   right: 0;
-  
   }
