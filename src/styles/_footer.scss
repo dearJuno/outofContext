@@ -1,16 +1,16 @@
 // FOOTER SECTION 
 
-//FOOTER TYPOGRAPHY 
+.footer {
+  justify-content: space-between;
+  padding: 15px 0;
+}
+
 footer a:hover{
 color: #6b6eec;
 }
 
 footer a:focus {
     padding: 2px;
-}
-.footer {
-  justify-content: space-between;
-  padding: 15px 0;
 }
 
 .dearJuno {

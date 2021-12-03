@@ -13,7 +13,6 @@ function About() {
         <section>
             <h1>Dev Info</h1>
             <section>
-                {/* DAN PROFILE  */}
             <div className="devProfile">
                 <div className="devInfo">
                         <img src={dan} alt="Headshot of Dev. Dan Tran"/>
@@ -27,7 +26,6 @@ function About() {
                 </div>
                     <img className="moviePoster" src={silentvoice} alt="Movie Poster for A Silent Voice"/>
                 </div>
-                {/* EMILY PROFILE  */}
                 <div className="devProfile">
                 <div className="devInfo">
                         <img src={emily} alt="Headshot of Dev. Emily Mernik"/>
@@ -47,7 +45,6 @@ function About() {
                 </div>
                     <img className="moviePoster" src={ parasite} alt="Movie Poster for Parasite"/>
                 </div>
-                {/* AILEEN PROFILE */}
                 <div className="devProfile">
                 <div className="devInfo">
                         <img src={aileen} alt="Headshot of Dev. Aileen Nunez"/>
@@ -61,7 +58,6 @@ function About() {
                 </div>
                     <img className="moviePoster" src={shrek} alt="Movie Poster for Shrek"/>
                 </div>
-                {/* RILEY PROFILE  */}
                 <div className="devProfile">
                 <div className="devInfo">
                         <img src={riley} alt="Headshot of Dev. Riley Hoffman"/>

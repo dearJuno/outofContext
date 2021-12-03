@@ -4,17 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { trackPromise } from 'react-promise-tracker';
 import { useNavigate } from "react-router-dom";
-// 1. Create Search bar where user can input movie of choice
-// 2. Call movie api by movie title which returns id of movie
 
 function Search() {
 
   const [searchInput, setSearchInput] = useState('')
   const [error, setError] = useState('')
 
-  // const [keyword] = useState ('')
   const navigate = useNavigate();
- 
+
 
   // function to handle someone typing in the input field
   const handleSearchInput = (e) => {
@@ -31,7 +28,6 @@ function Search() {
     if (keywordLabels.length) {
       keywordLabels.textContent = ""
     }
-  
 
     const apiKeyMov = `786c1383f2a24f7ee0f7ae525d2a9af4`
     // // Track Promise for Loader to reference
@@ -43,18 +39,13 @@ function Search() {
         query: searchInput,
       }
     }).then((response) => {
-      console.log(response.data.results)
       
-        //error handling if there aren't any movies returned
-        
+        //error handling if there aren't any movies returne
       if (response.data.results.length === 0) {
         setError(`There is no movie that matches the input: '${searchInput}'`)
       
-          console.log('error')
           return
       }
-    //   setMovieTitle(response.data.results[0].title)
-    //   setMoviePoster(response.data.results[0].poster_path)
 
       const movieId = response.data.results[0].id
       navigate(`/`)
@@ -62,18 +53,12 @@ function Search() {
     }).catch(error => {
         return error
     }))
- 
+
     // Clear search input field 
     setSearchInput('')
 
-
-    // function test(params) {
-    //   return movieId
-    // }
-
   }
- 
- 
+
   
   return (
     <section className="searchSection" id="searchSection">
@@ -83,7 +68,7 @@ function Search() {
           <label htmlFor="search">Search movie, get GIF's</label>
           <div>
             <input type="search" id="search" placeholder="Search Movie" value={searchInput} onChange={handleSearchInput} required />
-            <button><FontAwesomeIcon icon={faSearch} /* size="1.5x" apple voice over announced an invalid prop here looked it up and apparently it doesn't take decimal only integers. we it was rendering for us as 1X */ /><span className="sr-only">Search</span></button>
+            <button><FontAwesomeIcon icon={faSearch} /><span className="sr-only">Search</span></button>
           </div>
         </form>
       </div>
