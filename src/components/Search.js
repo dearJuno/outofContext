@@ -56,6 +56,7 @@ function Search() {
 
     // Clear search input field 
     setSearchInput('')
+
   }
 
   

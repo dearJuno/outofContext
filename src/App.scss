@@ -70,10 +70,17 @@ body, ul, h1, h2, h3, p {
   outline: none;
 }
 
-a:focus, 
-input:focus, 
+a {
+  padding: 2px;
+}
+
+a:focus,  
 button:focus {
-  outline: 2px solid #6b6eec;
+outline: 1px solid #6b6eec;
+}
+
+input:focus {
+  outline: 3px solid #6b6eec;
 }
 
 a:active, 

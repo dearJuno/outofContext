@@ -37,8 +37,6 @@ form button {
   position: absolute;
   left: 84%;
   bottom:10%; 
-}
-button {
   cursor: pointer;
 }
 
@@ -56,6 +54,28 @@ label{
 input{
 letter-spacing: 2px;
 }
+form button:focus {
+  outline: none;
+}
+
+.svg-inline--fa.fa-w-16 {
+  height: 1.1em;
+  width: 1.1em;
+}
+
+form button svg {
+  padding: 2px;
+}
+
+form button:focus svg {
+  outline: 1px solid #6b6eec;
+}
+
 form button:hover{
   color: #8ef9f4; 
+}
+
+form button:active svg {
+  color: initial; 
+  outline: none;
 }
