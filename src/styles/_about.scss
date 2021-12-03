@@ -17,7 +17,6 @@
 .moviePoster{
     height:300px;
     width:200px;
-    // align-self: center;
 }
 
 .devProfile{
@@ -28,10 +27,6 @@
     text-shadow: 2px 0px 0px #141640; 
     display: flex;
     justify-content: center;
-    
-    // > * {
-    //     flex:1;
-    // }
 }
 
 .devInfo{
@@ -49,7 +44,9 @@
         margin-right: 15px;
     }
 }
-
+.devInfo a:hover, .devInfo a:focus{
+    background-color: #141640;
+}
 .adrian span{
     display: block;
 }
@@ -65,12 +62,17 @@
     background: rgb(107,110,236);
     background: linear-gradient(330deg, rgba(107,110,236,1) 0%, rgba(211,242,255,1) 100%);
     text-align: center;
-}
-
-
+} 
 @media (max-width: 650px) {
     .devWrap {
         width: 400px;
+    }
+    .devInfo{
+       align-items: flex-start;
+       > ul * {
+        text-align: left;
+        margin-right: 2px;
+    }
     }
 }
 
@@ -78,4 +80,5 @@
     .devWrap {
         width: 320px;
     }
+ 
 }

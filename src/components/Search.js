@@ -66,7 +66,7 @@ function Search() {
       <div>
         <form action="submit" onSubmit={handleSubmit} role="search">
           <label htmlFor="search">Search movie, get GIF's</label>
-          <div>
+          <div className="searchBar">
             <input type="search" id="search" placeholder="Search Movie" value={searchInput} onChange={handleSearchInput} required />
             <button><FontAwesomeIcon icon={faSearch} /><span className="sr-only">Search</span></button>
           </div>
