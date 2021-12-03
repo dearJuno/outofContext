@@ -1,5 +1,5 @@
 .flexContainer {
-  padding:50px;
+  padding:100px 0;
   h2 {
       margin-bottom:0;
       text-align: center;
@@ -14,7 +14,7 @@
                 
             img {
             // padding:40px 0px 40px 40px;
-            width:40%;
+            width:20%;
             }
                 .infoBox {
                   display:flex;
@@ -45,4 +45,11 @@
                         }
                       }
           }
+        }
+        // =================
+
+        .mreel{
+          height: 115px;
+          background-image: linear-gradient(135deg,#7544CE 25%,#1192FD 75%); 
+          border-radius: 50%;
         }

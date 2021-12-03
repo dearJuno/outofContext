@@ -21,27 +21,24 @@ function App() {
   return (
     <Router>
     <div className="App">
-      {/* <Header /> */}
+      <Header />
       {/* sending the prop to allow the search component to update state */}
-    </div>
     <Routes>
       <Route path='/' element={<> 
-        <Header/>
         <InfoSection/>
         <Search/>
-        <Footer/>
       </>}/>
       <Route path="movie/:movieID" element={
         <>          
-        <Header/>
               <Search/> 
               {/* moved ul to App.js because we only want one to render */}
-            
               <Results/>
         </>
       } />
         <Route path='aboutus' element={<About/>}/>
-      </Routes>
+        </Routes>
+        <Footer/>
+      </div>
     </Router>
   );
 }
