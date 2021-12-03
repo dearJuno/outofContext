@@ -35,26 +35,22 @@
 .logo img:hover, .logo a:focus img {
   transform: scale(1.1);
 }
-
-// shrink popcorn back when clicked
-.logo a:active img {
-  transform: scale(1);
-}
-
 .menuBar {
   display: none;
   color: navy;; 
 }
 
-@media (max-width: 630px) {
-  .menuBar {
-    display: block;
-    align-self: center;
-  }
+//🚨💥 Leaving Burger Menu for Later Updates  
+// @media (max-width:630px){
+//   .menuBar{
+//     display: block;
+//     align-self: center;
+//   }
 
-  .headerSec {
-      nav li {
-        display: none; 
-    }
-  }
-}
+//   .headerSec{
+//       nav li{
+//         display: none; 
+//     }
+//   }
+// }
+
