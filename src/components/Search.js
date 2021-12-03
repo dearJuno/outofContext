@@ -42,7 +42,7 @@ function Search() {
       
         //error handling if there aren't any movies returne
       if (response.data.results.length === 0) {
-        setError(`There is no movie that matches the input: '${searchInput}'`)
+        setError(` Uh Oh! There is no movie that matches the input: '${searchInput}' Try another movie or different spelling!`)
       
           return
       }

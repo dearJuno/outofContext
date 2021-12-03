@@ -41,13 +41,11 @@ function Results() {
         })
             .then((response) => {
 
-                if (response.data.keywords.length === 0) {
-                    return setError('This movie does not contain any keywords with which to grab gifs with')
+                if (response.data.keywords.length <= 2) {
+                    return setError("Great movie choice, sadly we don't know enough about this movie to show you awesome GIFs!")
                 }
 
-                if (response.data.keywords.length <= 2) {
-                    return setError('There are not enough keywords to display 3 gifs for this movie!')
-                }
+            
                 const keywordArray = []
                 // An array to hold keywords
                 for (let keyName in response.data.keywords) {
