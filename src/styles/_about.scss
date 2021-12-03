@@ -69,10 +69,16 @@
     }
     .devInfo{
        align-items: flex-start;
+       max-width: 80%;
        > ul * {
         text-align: left;
         margin-right: 2px;
+        }
     }
+    .imageContainer img {
+        height: 250px;
+        width: 150px;
+
     }
 }
 
