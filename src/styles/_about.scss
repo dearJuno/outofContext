@@ -2,11 +2,22 @@
     height:150px; 
     width:150px; 
     border-radius: 50%;
+    border: solid 1px white;
+    box-shadow: 7px 5px  white;
+    margin-top: 10px;
+    margin-bottom: 10px ;
+    margin-right: 15px;
 }
-
+.imageContainer {
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 200px;
+}
 .moviePoster{
     height:300px;
     width:200px;
+    // align-self: center;
 }
 
 .devProfile{
@@ -15,9 +26,56 @@
     text-transform: uppercase;
     color:white;
     text-shadow: 2px 0px 0px #141640; 
+    display: flex;
+    justify-content: center;
+    
+    // > * {
+    //     flex:1;
+    // }
 }
 
 .devInfo{
     display: inline-block;
     width:50%; 
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 10px 0;
+
+    > ul * {
+        margin: 6px 0;
+        text-align: right;
+        margin-right: 15px;
+    }
+}
+
+.adrian span{
+    display: block;
+}
+
+.devWrap {
+    width: 650px; 
+    margin: 0 auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.aboutUsH1 {
+    background: rgb(107,110,236);
+    background: linear-gradient(330deg, rgba(107,110,236,1) 0%, rgba(211,242,255,1) 100%);
+    text-align: center;
+}
+
+
+@media (max-width: 650px) {
+    .devWrap {
+        width: 400px;
+    }
+}
+
+@media (max-width: 400px) {
+    .devWrap {
+        width: 320px;
+    }
 }
